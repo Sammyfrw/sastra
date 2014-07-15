@@ -7,6 +7,7 @@ require "monban/constraints/signed_out"
   resource :abouts, only: [:show]
   resource :settings, only: [:show]
 
+  resources :books, only: [:show]
   resources :showcases, only: [:show]
   resources :showcase_books, only: [:show]
   resources :snippets, only: [:show]
