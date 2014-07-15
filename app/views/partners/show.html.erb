@@ -1,0 +1,14 @@
+<h2>Showcase for <%= link_to @this_user.username, @this_user%></h2>
+<h3>Partners</h3> 
+<div class = "left_tab">
+  <div>
+    <%= link_to "Books", showcase_book_path%>
+  </div>
+  <div>
+    <%= link_to "Snippets", snippet_path%>
+  </div>
+  <div>
+    <%= link_to "Partners", partner_path%>
+  </div>
+</div>
+Display the list of users that this user has worked with.

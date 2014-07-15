@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sastra</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<h1> <%=link_to "Sastra", :dashboard %> </h1>
+  
+  <div class = "session_header">
+    <% if signed_in?%>
+    | <%= link_to current_user.username, @user%> |
+    | <%= link_to "Sign Out", sign_out_path%> |
+    | <%= link_to "Settings", settings_path%> |
+    <% else %>
+    | <%= link_to "Sign In", sign_in_path%> |
+    | <%= link_to "Sign Up", sign_up_path%> |
+    <% end%>
+
+  </div>
+
+  <div class = "about_us">
+    | <%=link_to "About Us", abouts_path%> |
+    
+  </div>
+
+  <div class = "contact_us">
+    | <%= link_to "Contact Us", contacts_path%> |
+  </div>
+
+<br>  
+<%= yield %>
+
+</body>
+</html>
