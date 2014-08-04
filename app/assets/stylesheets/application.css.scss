@@ -1,3 +1,11 @@
+@import "bourbon";
+@import "base/grid-settings";
+@import "neat";
+@import "base/base";
+@import "head_banner";
+@import "yield";
+@import "app_styles"
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,30 +18,5 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
-
-.session_header {
-	float:left;
-}
-
-.profile {
-	float:left;
-}
-
-.feed {
-	float:left;
-}
-
-.contact_us {
-	float:left;
-}
-
-.about_us {
-	float:left;
-}
-
-.left_tab{
-	float:left;
-}

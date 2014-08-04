@@ -1,26 +1,29 @@
-<br>
-<div class = "profile">
+<div class="profile">
   "Insert Your Profile Picture Here"
 </div>
 
-<div class = "profile">
+<div class="profile">
   "Place Your Banner or Your Featured Showcase Item Here"
 </div>
 
-<br>
-<div class = "feed">
-  <h3> News </h3>
+<div class="feed">
+  <h3>News</h3>
   <div>
     <button>Make New Announcement</button>
   </div>
   "Current User's News/Announcement Feed Placeholder"
 </div>
 
-<div class = "feed">
-  <h3> Shoutbox </h3>
-  <div>
-  "Dashboard for Current User's Shoutbox Feed Placeholder"
-  <textarea> Insert Shout </textarea>
-  <button>Submit</button>
+<div class="feed">
+  <h3>Shoutbox</h3>
+  <div class="shouts">
+      <%= render @shouts %>
+  </div>
+  <div class="shout_entry">
+    <em><strong>"Shoutbox"</strong></em>
+    <%= form_for [@user, @shout] do |f| %>
+      <%= f.text_area :body, size: "30x3" %>
+      <%= f.submit "New shout" %>
+    <% end %>
   </div>
 </div>

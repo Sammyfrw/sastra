@@ -1,0 +1,9 @@
+<div class="shout">
+  <%= shout.body %>
+  <%= shout.sender.username %>
+  <%= time_ago_in_words(shout.created_at) %>
+
+  <% if shout.involves?(current_user) %>
+    <%= button_to "Delete", [shout.receiver, shout], method: :delete %>
+  <% end %>
+</div>

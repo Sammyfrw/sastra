@@ -1,37 +1,36 @@
 <h2> <%= "#{@user.username}" %> </h2>
+<div class = "profile">
+  "Insert Your Profile Picture Here"
+</div>
 
-<br>
-  <div class = "profile">
-    "Insert Your Profile Picture Here"
-  </div>
+<div class = "banner">
+  "Place Your Banner or Your Featured Showcase Item Here"
+</div>
 
-  <div class = "profile">
-    "Place Your Banner or Your Featured Showcase Item Here"
-  </div>
+<%= link_to "This-User-Showcase-Link- Placeholder", showcase_book_path%>
+<%= link_to "This-User-Owned-Books-Link- Placeholder", book_path%>
 
-  <%= link_to "This-User-Showcase-Link- Placeholder", showcase_book_path%>
-   <%= link_to "This-User-Owned-Books-Link- Placeholder", book_path%>
-<br>
-
-<p>
-  <div class = "feed">
-    <h3> News </h3>
-    <% if current_user.id == @user.id %>
+<div class = "feed">
+  <h3> News </h3>
+  <% if current_user.id == @user.id %>
     <div>
       <button>Make New Announcement</button>
     </div>
-    <%end%>
-    "This User's News/Announcement Feed Placeholder"
-    <%= link_to "This-User-Announcement-Link- Placeholder", announcement_path %>
+  <%end%>
+  "This User's News/Announcement Feed Placeholder"
+  <%= link_to "This-User-Announcement-Link- Placeholder", announcement_path %>
+</div>
+
+<div class = "feed">
+  <h3> Shoutbox </h3>
+  <div class = "shouts">
+      <%= render @shouts %>
   </div>
-
-  <div class = "feed">
-    <h3> Shoutbox </h3>
-    <div>
-    "Dashboard for This User's Shoutbox Feed Placeholder"
-    <div>
-      <textarea> Insert Shout </textarea>
-      <button>Submit</button>
-    </div>
-</p>
-
+  <div class = "shout_entry">
+    <em><strong>"Shoutbox"</strong></em>
+    <%= form_for [@user, @shout] do |f| %>
+      <%= f.text_area :body, size: "30x3" %>
+      <%= f.submit "New shout" %>
+    <% end %>
+  </div>
+</div>

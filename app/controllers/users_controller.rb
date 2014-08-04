@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @shout = Shout.new
+    @shouts = @user.received_shouts.order(created_at: :desc)
   end
 
   def create

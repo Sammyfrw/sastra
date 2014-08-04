@@ -1,0 +1,8 @@
+#yield {
+  @include outer-container;
+}
+
+.feed {
+  @include span-columns (4);
+  float:left;
+}

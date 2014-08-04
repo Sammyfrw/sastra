@@ -1,0 +1,28 @@
+#head_banner {
+  @include outer-container;
+}
+
+#head_banner div {
+  @include span-columns(3);
+  /*text-align: center;*/
+  margin-bottom: 3m;
+}
+
+/*
+.session_header {
+  float:left;
+}
+
+.profile {
+  float:left;
+}
+
+
+.contact_us {
+  float:left;
+}
+
+.about_us {
+  float:left;
+}
+*/
