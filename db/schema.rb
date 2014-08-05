@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804145113) do
+ActiveRecord::Schema.define(version: 20140804212731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmark_relationships", force: true do |t|
+    t.integer  "bookmarked_user_id", null: false
+    t.integer  "bookmarker_id",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "bookmark_relationships", ["bookmarked_user_id"], name: "index_bookmark_relationships_on_bookmarked_user_id", using: :btree
+  add_index "bookmark_relationships", ["bookmarker_id", "bookmarked_user_id"], name: "bookmark_relationships_index_unique_constraint", unique: true, using: :btree
+  add_index "bookmark_relationships", ["bookmarker_id"], name: "index_bookmark_relationships_on_bookmarker_id", using: :btree
 
   create_table "shouts", force: true do |t|
     t.integer  "sender_id",   null: false

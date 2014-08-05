@@ -18,6 +18,9 @@ require "monban/constraints/signed_out"
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :show, :create] do
     resources :shouts, only: [:create, :destroy]
+    resource :bookmarkers, only: [:show]
+    resource :bookmarked_users, only: [:show]
+    resource :bookmark_relationship, only: [:create, :destroy]
   end
 
   get "/sign_up" => "users#new", as: :sign_up

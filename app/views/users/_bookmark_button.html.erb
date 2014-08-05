@@ -1,0 +1,7 @@
+<div>
+  <% if current_user.bookmarked?(user) %>
+    <%= button_to "Remove Bookmark", [user, :bookmark_relationship], method: :delete %>
+  <% else %>
+    <%= button_to "Bookmark User", [user, :bookmark_relationship] %>
+  <% end %>
+</div>

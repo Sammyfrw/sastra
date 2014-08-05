@@ -1,4 +1,8 @@
 <h2> <%= "#{@user.username}" %> </h2>
+<div class = "bookmark_links">
+  <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
+  <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
+</div>
 <div class = "profile">
   "Insert Your Profile Picture Here"
 </div>
@@ -10,13 +14,15 @@
 <%= link_to "This-User-Showcase-Link- Placeholder", showcase_book_path%>
 <%= link_to "This-User-Owned-Books-Link- Placeholder", book_path%>
 
+<%= render "bookmark_button", user: @user %>
+
 <div class = "feed">
   <h3> News </h3>
   <% if current_user.id == @user.id %>
     <div>
       <button>Make New Announcement</button>
     </div>
-  <%end%>
+  <% end %>
   "This User's News/Announcement Feed Placeholder"
   <%= link_to "This-User-Announcement-Link- Placeholder", announcement_path %>
 </div>
