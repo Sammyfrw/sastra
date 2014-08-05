@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
   def bookmarked?(other_user)
     bookmarked_users.include?(other_user)
   end
+
+  def ordered_shouts
+    received_shouts.order(created_at: :desc)
+  end
 end

@@ -18,13 +18,14 @@
 
 <div class = "feed">
   <h3> News </h3>
-  <% if current_user.id == @user.id %>
-    <div>
-      <button>Make New Announcement</button>
-    </div>
+  <% if current_user == @user %>
+    <%= link_to "New Announcement", [:new, @user, :announcement] %>
   <% end %>
-  "This User's News/Announcement Feed Placeholder"
-  <%= link_to "This-User-Announcement-Link- Placeholder", announcement_path %>
+  <div class="announcements">
+    <ul>
+      <%= render @announcements, user: @user, announcements: @announcements %>
+    </ul>
+  </div>
 </div>
 
 <div class = "feed">
@@ -34,9 +35,9 @@
   </div>
   <div class = "shout_entry">
     <em><strong>"Shoutbox"</strong></em>
-    <%= form_for [@user, @shout] do |f| %>
-      <%= f.text_area :body, size: "30x3" %>
-      <%= f.submit "New shout" %>
+    <%= form_for [@user, @shout] do |form| %>
+      <%= form.text_area :body, size: "30x3" %>
+      <%= form.submit "New shout" %>
     <% end %>
   </div>
 </div>

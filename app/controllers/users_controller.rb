@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @shout = Shout.new
     @shouts = @user.received_shouts.order(created_at: :desc)
+    @announcements = @user.announcements
   end
 
   def create
