@@ -1,6 +1,7 @@
-<h2><%= @user.username %>'s Announcements %></h2>
+<h2><%= @user.username %>'s Announcements</h2>
 <div class="announcements">
   <ul>
     <%= render @announcements, user: @user %>
+    <%= paginate @announcements %>
   </ul>
 </div>

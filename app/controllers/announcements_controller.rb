@@ -1,7 +1,7 @@
 class AnnouncementsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @announcements = @user.announcements
+    @announcements = @user.announcements.page(params[:page]).per(10)
   end
 
   def show

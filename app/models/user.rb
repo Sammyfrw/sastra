@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
   end
 
   def ordered_shouts
-    received_shouts.order(created_at: :desc)
+    received_shouts.order(created_at: :desc).limit(10)
+  end
+
+  def ordered_announcements
+    announcements.order(created_at: :desc).limit(10)
   end
 end

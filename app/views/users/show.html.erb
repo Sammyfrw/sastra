@@ -1,13 +1,13 @@
-<h2> <%= "#{@user.username}" %> </h2>
-<div class = "bookmark_links">
+<h2><%= @user.username %></h2>
+<div class="bookmark_links">
   <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
   <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
 </div>
-<div class = "profile">
+<div class="profile">
   "Insert Your Profile Picture Here"
 </div>
 
-<div class = "banner">
+<div class="banner">
   "Place Your Banner or Your Featured Showcase Item Here"
 </div>
 
@@ -16,11 +16,12 @@
 
 <%= render "bookmark_button", user: @user %>
 
-<div class = "feed">
+<div class="feed">
   <h3> News </h3>
   <% if current_user == @user %>
     <%= link_to "New Announcement", [:new, @user, :announcement] %>
   <% end %>
+  <%= link_to "All Announcements", [current_user, @announcement] %>
   <div class="announcements">
     <ul>
       <%= render @announcements, user: @user, announcements: @announcements %>
@@ -28,13 +29,12 @@
   </div>
 </div>
 
-<div class = "feed">
-  <h3> Shoutbox </h3>
-  <div class = "shouts">
+<div class="feed">
+  <h3>Shoutbox</h3>
+  <div class="shouts">
       <%= render @shouts %>
   </div>
-  <div class = "shout_entry">
-    <em><strong>"Shoutbox"</strong></em>
+  <div class="shout_entry">
     <%= form_for [@user, @shout] do |form| %>
       <%= form.text_area :body, size: "30x3" %>
       <%= form.submit "New shout" %>

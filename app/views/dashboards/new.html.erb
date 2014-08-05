@@ -9,9 +9,13 @@
 <div class="feed">
   <h3>News</h3>
   <%= link_to "New Announcement", [:new, current_user, :announcement] %>
+  <%= link_to "All Announcements", [current_user, @announcement] %>
   <div class="announcements">
-    <%= render current_user.announcements, user: current_user %>
+    <ul>
+      <%= render current_user.ordered_announcements, user: current_user %>
+    </ul>
   </div>
+</div>
 
 <div class="feed">
   <h3>Shoutbox</h3>
@@ -19,7 +23,6 @@
     <%= render current_user.ordered_shouts, user: current_user %>
   </div>
   <div class="shout_entry">
-    <em><strong>"Shoutbox"</strong></em>
     <%= form_for [current_user, @shout] do |form| %>
       <%= form.text_area :body, size: "30x3" %>
       <%= form.submit "New shout" %>
