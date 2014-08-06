@@ -1,4 +1,7 @@
 <h3>Books</h3>
+<% if user == current_user %>
+  <%= link_to "Add new book", [:new, :book] %>
+<% end %>
 
 <div>
   <h4>Books Written by <%= user.username %></h4>

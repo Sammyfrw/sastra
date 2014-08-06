@@ -1,0 +1,52 @@
+<%= radio_button_tag(:form_type, "author") %>
+<%= label_tag(:form_type_author, "Add a book I've written") %>
+<%= radio_button_tag(:form_type, "owner") %>
+<%= label_tag(:form_type_owner, "Add a book I own") %>
+
+<div class="form_field">
+  <%= form.label "Title" %>
+  <%= form.text_field :title %>
+</div>
+<div class="form_field">
+  <%= form.label "Author" %>
+  <%= form.text_field :authors %>
+</div>
+<div class="form_field">
+  <%= form.label "Status" %>
+  <%= form.text_field :status %>
+</div>
+<div class="form_field">
+  <%= form.label "Format" %>
+  <%= form.text_field :format %>
+</div>
+<div class="form_field">
+  <%= form.label "Edition" %>
+  <%= form.text_field :edition %>
+</div>
+<div class="form_field">
+  <%= form.label "Genre" %>
+  <%= form.text_field :genre %>
+</div>
+<div class="form_field">
+  <%= form.label "Publisher" %>
+  <%= form.text_field :publishers %>
+</div>
+<div class="form_field">
+  <%= form.label "Published Date" %>
+  <%= form.text_field :published %>
+</div>
+<div class="form_field">
+  <%= form.label "ISBN-10" %>
+  <%= form.text_field :ISBN_10 %>
+</div>
+<div class="form_field">
+  <%= form.label "ISBN-13" %>
+  <%= form.text_field :ISBN_13 %>
+</div>
+<div class="form_field">
+  <%= form.label "Bookshops" %>
+  <%= form.text_field :book_shops %>
+</div>
+<div class="form_field">
+  <%= form.submit %>
+</div>
