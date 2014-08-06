@@ -11,8 +11,9 @@
   "Place Your Banner or Your Featured Showcase Item Here"
 </div>
 
-<%= link_to "This-User-Showcase-Link- Placeholder", showcase_book_path%>
-<%= link_to "This-User-Owned-Books-Link- Placeholder", book_path%>
+<%= link_to "My Showcase", [@user, :showcase] %>
+
+<%= link_to "This-User-Owned-Books-Link- Placeholder", book_path %>
 
 <%= render "bookmark_button", user: @user %>
 
@@ -21,7 +22,7 @@
   <% if current_user == @user %>
     <%= link_to "New Announcement", [:new, @user, :announcement] %>
   <% end %>
-  <%= link_to "All Announcements", [current_user, @announcement] %>
+  <%= link_to "All Announcements", [@user, @announcement] %>
   <div class="announcements">
     <ul>
       <%= render @announcements, user: @user, announcements: @announcements %>
