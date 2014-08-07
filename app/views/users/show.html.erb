@@ -11,9 +11,7 @@
   "Place Your Banner or Your Featured Showcase Item Here"
 </div>
 
-<%= link_to "My Showcase", [@user, :showcase] %>
-
-<%= link_to "This-User-Owned-Books-Link- Placeholder", book_path %>
+<%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
 
 <%= render "bookmark_button", user: @user %>
 

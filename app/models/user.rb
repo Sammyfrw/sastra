@@ -11,17 +11,39 @@ class User < ActiveRecord::Base
   has_many :bookmarked_user_relationships,
     foreign_key: :bookmarker_id,
     class_name: "BookmarkRelationship"
-  has_many :bookmarked_users, through: :bookmarked_user_relationships
+  has_many :bookmarked_users, through: :bookmarked_user_relationships,
+    dependent: :destroy
 
   has_many :bookmarker_relationships,
     foreign_key: :bookmarked_user_id,
     class_name: "BookmarkRelationship"
-  has_many :bookmarkers, through: :bookmarker_relationships
+  has_many :bookmarkers, through: :bookmarker_relationships,
+    dependent: :destroy
 
-  has_many :owned_books, foreign_key: :owner_id, class_name: "Book"
-  has_many  :authored_books, foreign_key: :author_id, class_name: "Book"
-  has_many :published_books, foreign_key: :publisher_id, class_name: "Book"
-  has_many :sold_books, foreign_key: :bookshop_id, class_name: "Book"
+  has_many :book_authors,
+    foreign_key: :author_id,
+    class_name: "BookAuthor"
+  has_many :authored_books, through: :book_authors, source: :book,
+    dependent: :destroy
+
+  has_many :book_publishers,
+    foreign_key: :publisher_id,
+    class_name: "BookPublisher"
+  has_many :published_books, through: :book_publishers, source: :book,
+    dependent: :destroy
+
+
+  has_many :book_shops,
+    foreign_key: :book_shop_id,
+    class_name: "BookShop"
+  has_many :stocked_books, through: :book_shops, source: :book,
+    dependent: :destroy
+
+  has_many :book_owners,
+    foreign_key: :owner_id,
+    class_name: "BookOwner"
+  has_many :owned_books, through: :book_owners, source: :book,
+    dependent: :destroy
 
   def involved_shouts
     Shout.where("sender_id = ? OR receiver_id = ?", id, id)

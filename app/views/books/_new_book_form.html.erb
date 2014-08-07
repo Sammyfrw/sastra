@@ -1,19 +1,15 @@
-<%= radio_button_tag(:form_type, "author") %>
-<%= label_tag(:form_type_author, "Add a book I've written") %>
-<%= radio_button_tag(:form_type, "owner") %>
-<%= label_tag(:form_type_owner, "Add a book I own") %>
-
+<h4>Add Book</h4>
 <div class="form_field">
   <%= form.label "Title" %>
   <%= form.text_field :title %>
 </div>
 <div class="form_field">
   <%= form.label "Author" %>
-  <%= form.text_field :authors %>
+  <%= form.collection_check_boxes(:author_ids, @users, :id, :username) %>
 </div>
 <div class="form_field">
   <%= form.label "Status" %>
-  <%= form.text_field :status %>
+  <%= form.collection_select :status, Book::STATUS, :to_s, :to_s, include_blank: true %>
 </div>
 <div class="form_field">
   <%= form.label "Format" %>
@@ -29,11 +25,11 @@
 </div>
 <div class="form_field">
   <%= form.label "Publisher" %>
-  <%= form.text_field :publishers %>
+  <%= form.collection_check_boxes(:publisher_ids, @users, :id, :username) %>
 </div>
 <div class="form_field">
   <%= form.label "Published Date" %>
-  <%= form.text_field :published %>
+  <%= form.datetime_local_field :published %>
 </div>
 <div class="form_field">
   <%= form.label "ISBN-10" %>
@@ -45,7 +41,7 @@
 </div>
 <div class="form_field">
   <%= form.label "Bookshops" %>
-  <%= form.text_field :book_shops %>
+  <%= form.collection_check_boxes(:shop_ids, @users, :id, :username) %>
 </div>
 <div class="form_field">
   <%= form.submit %>

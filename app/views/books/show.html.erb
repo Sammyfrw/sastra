@@ -1,21 +1,26 @@
-<h2> Books belonging to <%= link_to @user.username, @user%> </h2>
+<h2> <%= @book.title %> </h2>
 
 This page lists the details of a book of a particular ID once it is registered.
 
 <ul>
-  <li>Book Name</li>
-  <li>Book Author</li>
-  <li>Book Genre</li>
-  <li>Book Published</li>
-  <li>Book Edition</li>
+  <li>Title: <%= @book.title %></li>
+  <li>Author: <%= render @book.authors %></li>
+  <li>Genre: <%= @book.genre %></li>
+  <li>Status: <%= @book.status %></li>
+  <li>Edition: <%= @book.edition %></li>
+  <li>Format: <%= @book.format %></li>
+  <li>ISBN-10: <%= @book.ISBN_10%></li>
+  <li>ISBN-13: <%= @book.ISBN_13%></li>
+
+  <li>Publisher: <%= render @book.publishers %></li>
+  <li>Published Date: <%= @book.published %></li>
 </ul>
 
-<p><b>Description</b>: This book is about blah blah blah.</p>
+<p><b>Description</b>: This book currently has no description.</p>
 
 <h3> Shops that sell this book: </h3>
   <ul>
-    <li>Link to Shop 1's user page</li>
-    <li>Link to Shop 2's user page</li>
+    <%= render @book.shops %>
   </ul>
 
 <h3> Comments about this book: </h3>
@@ -26,4 +31,3 @@ This page lists the details of a book of a particular ID once it is registered.
     <button>Submit</button>
   </div>
 </div>
-  

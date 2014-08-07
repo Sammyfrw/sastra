@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @shout = Shout.new
     @shouts = @user.ordered_shouts
     @announcements = @user.ordered_announcements
+    @announcement = Announcement.new
   end
 
   def create
