@@ -1,7 +1,7 @@
 <div class="showcase_section">
   <h3>Books</h3>
-  <% if user == current_user %>
-    <%= link_to "Add new book", [:new, :book] %>
+  <% if current_user == user %>
+    <%= button_to "Add book", [:new, :book], method: :get %>
   <% end %>
 
   <div class="book_list">

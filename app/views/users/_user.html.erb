@@ -1,2 +1,3 @@
 <%= link_to user.username, user %>
 <%= render "users/bookmark_button", user: user%>
+<%= render "users/partner_button", user: user, partnership: user.partner_relationship %>

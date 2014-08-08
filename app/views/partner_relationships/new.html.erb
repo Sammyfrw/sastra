@@ -2,7 +2,7 @@
 <%= form_for [current_user, @partner_relationship] do |form| %>
   <div class="form_field">
     <%= form.label "Name" %>
-    <%= form.collection_select :partnered_user_id, @users, :id, :username, include_blank: true %>
+    <%= form.collection_select :partner_id, @users, :id, :username, include_blank: true %>
   </div>
   <div class="form_field">
     <%= form.label :message %>

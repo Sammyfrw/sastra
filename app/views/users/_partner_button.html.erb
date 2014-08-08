@@ -1,0 +1,5 @@
+<div class="user_context_button">
+  <% if current_user.partnered?(user) %>
+    <%= button_to "Remove Partner", [user, :partner_relationship], method: :delete %>
+  <% end %>
+</div>

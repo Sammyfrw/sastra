@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825140056) do
+ActiveRecord::Schema.define(version: 20140825191841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140825140056) do
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id",    null: false
-    t.string   "body",       null: false
+    t.text     "body",       null: false
     t.string   "title",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -126,15 +126,15 @@ ActiveRecord::Schema.define(version: 20140825140056) do
   add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
 
   create_table "partner_relationships", force: true do |t|
-    t.integer  "partnered_user_id",                                                     null: false
-    t.integer  "partner_id",                                                            null: false
-    t.string   "message",           default: "Hello! Would you like to be my partner?", null: false
-    t.boolean  "accepted",          default: false,                                     null: false
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
+    t.integer  "initiator_id",                                                     null: false
+    t.integer  "partner_id",                                                       null: false
+    t.text     "message",      default: "Hello! Would you like to be my partner?", null: false
+    t.boolean  "accepted",     default: false,                                     null: false
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
   end
 
-  add_index "partner_relationships", ["partner_id", "partnered_user_id"], name: "partner_relationships_index_unique_constraint", unique: true, using: :btree
+  add_index "partner_relationships", ["partner_id", "initiator_id"], name: "partner_relationships_index_unique_constraint", unique: true, using: :btree
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id",                             null: false
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 20140825140056) do
   create_table "shouts", force: true do |t|
     t.integer  "sender_id",   null: false
     t.integer  "receiver_id", null: false
-    t.string   "body",        null: false
+    t.text     "body",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

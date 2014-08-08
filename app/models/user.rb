@@ -20,38 +20,17 @@ class User < ActiveRecord::Base
   has_many :bookmarker_relationships,
     foreign_key: :bookmarked_user_id,
     class_name: "BookmarkRelationship"
+
   has_many :bookmarkers, through: :bookmarker_relationships,
     dependent: :destroy
 
-  has_many :partnered_user_relationships,
-    foreign_key: :partner_id,
+  has_many :initiator_relationships, foreign_key: :partner_id,
     class_name: "PartnerRelationship", dependent: :destroy
-  has_many :partnered_users, through: :partnered_user_relationships
+  has_many :initiators, through: :initiator_relationships
 
-  has_many :pending_partnered_user_relationships, -> { where accepted: false },
-    foreign_key: :partner_id,
-    class_name: "PartnerRelationship"
-  has_many :pending_partnered_users, through: :pending_partnered_user_relationships, source: :partnered_user
-
-  has_many :accepted_partnered_user_relationships, -> { where accepted: true },
-    foreign_key: :partner_id,
-    class_name: "PartnerRelationship"
-  has_many :accepted_partnered_users, through: :accepted_partnered_user_relationships, source: :partnered_user
-
-  has_many :partner_relationships,
-    foreign_key: :partnered_user_id,
+  has_many :partner_relationships, foreign_key: :initiator_id,
     class_name: "PartnerRelationship", dependent: :destroy
   has_many :partners, through: :partner_relationships
-
-  has_many :pending_partnerships, -> { where accepted: false },
-    foreign_key: :partnered_user_id,
-    class_name: "PartnerRelationship"
-  has_many :pending_partners, through: :partner_relationships, source: :partner
-
-  has_many :accepted_partnerships, -> { where accepted: true },
-    foreign_key: :partnered_user_id,
-    class_name: "PartnerRelationship"
-  has_many :accepted_partners, through: :accepted_partnerships, source: :partner
 
   has_many :book_authors,
     foreign_key: :author_id,
@@ -82,15 +61,16 @@ class User < ActiveRecord::Base
                         length: { minimum: 3,
                                   maximum: 20,
                                   wrong_length: "Please input a username between 3 to 20 letters." }
+
   validates :password_digest, presence: true,
                         length: { minimum: 6,
                                   wrong_length: "Please input a password with 6 or more characters." }
+
   validates :admin, inclusion: { in: [true, false] }
   validates :locked, inclusion: { in: [true, false] }
 
-
   def involved_shouts
-    Shout.where("sender_id = ? OR receiver_id = ?", id, id)
+    shouts.where("sender_id = ? OR receiver_id = ?", id, id)
   end
 
   def self.query(search_term)
@@ -115,10 +95,6 @@ class User < ActiveRecord::Base
 
   def ordered_announcements
     announcements.order(created_at: :desc).limit(10)
-  end
-
-  def partnered?(other_user)
-    partnered_users.include?(other_user) || partners.include?(other_user)
   end
 
   def can_edit?(object)

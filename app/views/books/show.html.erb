@@ -6,7 +6,7 @@
 <%= render "flags/flag_buttons", flaggable: @book %>
 
 <% if @book.authors.exists?(current_user) %>
-  <%= link_to "Edit Book", [:edit, @book] %>
+  <%= button_to "Edit Book", [:edit, @book], method: :get %>
 <% end %>
 
 <div class="book_info">

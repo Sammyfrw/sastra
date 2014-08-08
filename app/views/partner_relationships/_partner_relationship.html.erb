@@ -1,0 +1,28 @@
+<div class="partner_item">
+  <% if current_user == user %>
+    <% if partner_relationship.offered_from?(user) %>
+      <li>(Awaiting approval) <%= link_to partner_relationship.partner.username, partner_relationship.partner %></li>
+    <% end %>
+
+    <% if partner_relationship.offered_to?(user) %>
+      <li>
+        (Awaiting response) <%= link_to partner_relationship.initiator.username, partner_relationship.initiator %> <br>
+        <span class="partner_message"><%= partner_relationship.message %></span>
+        <div class="partner_buttons">
+          <%= button_to "Accept", user_partner_relationship_partner_approval_path(partner_relationship_id: partner_relationship.id) %>
+          <%= button_to "Decline", user_partner_relationship_partner_denial_path(partner_relationship_id: partner_relationship.id) %>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+
+  <% if partner_relationship.accepted? %>
+    <li>
+      <%= link_to partner_relationship.partner.username, partner_relationship.partner %>
+      <span class="partner_message">partners since <%= partner_relationship.updated_at.strftime("%d %B, %Y")%></span>
+      <div class="partner_buttons">
+        <%= button_to "Remove Partner", user_partner_relationship_path(id: partner_relationship.id), method: :delete %>
+      </div>
+    </li>
+  <% end %>
+</div>

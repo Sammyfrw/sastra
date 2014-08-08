@@ -1,12 +1,9 @@
 <div class="showcase_section">
   <h3>Snippets</h3>
-  <% if user == current_user %>
-    <%= link_to "Add new snippet", [:new, :snippet] %>
-  <% end %>
-  <div>
-    <h4><%= user.username %>'s Snippets</h4>
+  <%= button_to "New Snippet", [:new, :snippet], method: :get %>
+  <div class="snippet_list">
     <ul>
-      <%= render user.snippets %>
+      <%= render @snippets %>
     </ul>
   </div>
 </div>

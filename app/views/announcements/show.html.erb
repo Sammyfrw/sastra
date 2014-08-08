@@ -3,7 +3,7 @@
     by <%= link_to @user.username, @user %> at <%= @announcement.created_at.strftime("%A, %d %B %Y at %I:%M %P") %>
     <div class="control_buttons">
       <% if current_user.can_edit?(@announcement) %>
-        <%= link_to "Edit Announcement", [:edit, @announcement] %>
+        <%= button_to "Edit Announcement", [:edit, @announcement], method: :get %>
         <%= button_to "Delete Announcement", @announcement, method: :delete %>
       <% end %>
       <%= render "flags/flag_buttons", flaggable: @announcement %>

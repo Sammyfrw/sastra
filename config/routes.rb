@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     resource :bookmarkers, only: [:show]
     resource :bookmarked_users, only: [:show]
     resource :bookmark_relationship, only: [:create, :destroy]
-    resources :partner_relationships, only: [:create, :destroy]
+    resources :partner_relationships, only: [:create, :destroy] do
+      resource :partner_approval, only: [:create]
+      resource :partner_denial, only: [:create]
+    end
     resource :showcase, only: [:show]
     resource :profile, only: [:show, :new, :create, :edit, :update]
     resources :flags, only: [:create, :destroy]
