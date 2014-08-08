@@ -1,16 +1,18 @@
 <h2>Showcase for <%= link_to @user.username, @user %></h2>
 <div class="showcase_tabs">
-  <div class="showcase_button">
+  <div class="showcase_book_tab">
     <%= link_to "Books", [@user, :showcase] %>
   </div>
-  <div class="showcase_button">
+  <div class="showcase_snippet_tab">
     Snippets
   </div>
-  <div class="showcase_button">
-    Partners
+  <div class="showcase_partner_tab">
+    <%= link_to "Partners", [@user, :showcase] %>
   </div>
 </div>
 
 <div class="showcase_area">
   <%= render "showcase_books", user: @user %>
+
+  <%= render "showcase_partners", user: @user %>
 </div>

@@ -1,0 +1,14 @@
+<h4>Add Partner</h4>
+<%= form_for [current_user, @partner_relationship] do |form| %>
+  <div class="form_field">
+    <%= form.label "Name" %>
+    <%= form.collection_select :partnered_user_id, @users, :id, :username, include_blank: true %>
+  </div>
+  <div class="form_field">
+    <%= form.label :message %>
+    <%= form.text_area :message %>
+  </div>
+  <div class="form_field">
+    <%= form.submit "Send Request" %>
+  </div>
+<% end %>

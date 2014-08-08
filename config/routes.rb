@@ -8,10 +8,11 @@ require "monban/constraints/signed_out"
   resource :settings, only: [:show]
 
   resources :books, only: [:index, :show, :new, :create]
-  resources :showcase_books, only: [:show]
   resources :snippets, only: [:show]
-  resources :partners, only: [:show]
   resources :feeds, only: [:show]
+
+  resources :partner_relationships, only: [:new]
+  resources :partners, only: [:show]
 
   resources :announcements, only: [:create, :update, :destroy]
 
@@ -21,6 +22,7 @@ require "monban/constraints/signed_out"
     resource :bookmarkers, only: [:show]
     resource :bookmarked_users, only: [:show]
     resource :bookmark_relationship, only: [:create, :destroy]
+    resources :partner_relationships, only: [:create, :destroy]
     resources :announcements, only: [:index, :show, :new, :edit]
     resource :showcase, only: [:show]
   end

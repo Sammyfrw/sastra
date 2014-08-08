@@ -3,7 +3,7 @@
   <%= link_to "Add new book", [:new, :book] %>
 <% end %>
 
-<div>
+<div class="book_list">
   <h4>Books Written by <%= user.username %></h4>
   <ul>
     <% user.authored_books.each do |book| %>

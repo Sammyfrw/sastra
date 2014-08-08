@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807202619) do
+ActiveRecord::Schema.define(version: 20140808133003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,17 @@ ActiveRecord::Schema.define(version: 20140807202619) do
     t.integer "ISBN_13"
     t.boolean "verified",  default: false, null: false
   end
+
+  create_table "partner_relationships", force: true do |t|
+    t.integer  "partnered_user_id",                                                     null: false
+    t.integer  "partner_id",                                                            null: false
+    t.string   "message",           default: "Hello! Would you like to be my partner?", null: false
+    t.boolean  "accepted",          default: false,                                     null: false
+    t.datetime "created_at",                                                            null: false
+    t.datetime "updated_at",                                                            null: false
+  end
+
+  add_index "partner_relationships", ["partner_id", "partnered_user_id"], name: "partner_relationships_index_unique_constraint", unique: true, using: :btree
 
   create_table "shouts", force: true do |t|
     t.integer  "sender_id",   null: false
