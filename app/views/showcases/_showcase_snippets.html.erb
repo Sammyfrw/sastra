@@ -1,5 +1,10 @@
 <h3>Snippets</h3>
-
-Display the list of snippets (quotes, bites from the book,
-highlights) from a book, talk, etc. A featured snippet can be selected and
-displayed at the top.
+<% if user == current_user %>
+  <%= link_to "Add new snippet", [:new, :snippet] %>
+<% end %>
+<div>
+  <h4><%= user.username %>'s Snippets</h4>
+  <ul>
+    <%= render user.snippets %>
+  </ul>
+</div>

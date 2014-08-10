@@ -8,7 +8,8 @@ require "monban/constraints/signed_out"
   resource :settings, only: [:show]
 
   resources :books, only: [:index, :show, :new, :create]
-  resources :snippets, only: [:show]
+  resources :showcase_books, only: [:show]
+  resources :snippets, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :feeds, only: [:show]
 
   resources :partner_relationships, only: [:new]
