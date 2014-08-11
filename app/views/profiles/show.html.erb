@@ -1,0 +1,22 @@
+<h3><%= @user.username %>'s Profile</h3>
+<div class="profile_pic">
+  <%= @profile.avatar %>
+</div>
+<div class="profile_list">
+  <ul>
+    <li>Name: <%= @profile.name %></li>
+    <li>Pen Name: <%= @profile.pen_name %></li>
+    <li>Age: <%= @profile.age %></li>
+    <li>Gender: <%= @profile.gender %></li>
+    <li>Birthday: <%= @profile.birthday %></li>
+    <li>Country: <%= @profile.country %></li>
+    <li>Address: <%= @profile.address %></li>
+    <li>City: <%= @profile.city %></li>
+    <li>State: <%= @profile.state %></li>
+    <li>Zipcode: <%= @profile.zipcode %></li>
+    <li>Website: <%= @profile.website %></li>
+  </ul>
+</div>
+<% if current_user == @user %>
+  <%= link_to "Edit Profile", [:edit, @user, :profile] %>
+<% end %>

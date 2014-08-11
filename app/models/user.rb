@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :profile, dependent: :destroy
   has_many :books
   has_many :announcements
   has_many :snippets
@@ -101,5 +102,9 @@ class User < ActiveRecord::Base
 
   def partnered?(other_user)
     partnered_users.include?(other_user) || partners.include?(other_user)
+  end
+
+  def has_profile?
+    profile
   end
 end

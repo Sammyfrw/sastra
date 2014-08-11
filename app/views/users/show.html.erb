@@ -1,19 +1,25 @@
 <h2><%= @user.username %></h2>
-<div class="bookmark_links">
-  <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
-  <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
-</div>
-<div class="profile">
-  "Insert Your Profile Picture Here"
-</div>
+<div class="user_info">
+  <div class="bookmark_links">
+    <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
+    <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
+  </div>
+  <div class="profile">
+    "Insert Your Profile Picture Here"
+    <% if @user.has_profile? %>
+      <%= link_to "Profile", [@user, :profile] %>
+    <% elsif current_user == @user  %>
+      <%= link_to "Create Profile", [:new, @user, :profile] %>
+    <% end %>
+  </div>
 
-<div class="banner">
-  "Place Your Banner or Your Featured Showcase Item Here"
+  <div class="banner">
+    "Place Your Banner or Your Featured Showcase Item Here"
+  </div>
+
+  <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
+  <%= render "bookmark_button", user: @user %>
 </div>
-
-<%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
-
-<%= render "bookmark_button", user: @user %>
 
 <div class="feed">
   <h3> News </h3>

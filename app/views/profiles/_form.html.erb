@@ -1,0 +1,52 @@
+<div class="form_field">
+  <%= form.label :avatar, "Avatar" %>
+  <%= form.text_field :avatar %>
+</div>
+<div class="form_field">
+  <%= form.label :name, "Full Name" %>
+  <%= form.text_field :name %>
+</div>
+<div class="form_field">
+  <%= form.label :pen_name, "Pen Name" %>
+  <%= form.text_field :pen_name %>
+</div>
+<div class="form_field">
+  <%= form.label :age, "Age" %>
+  <%= form.text_field :age %>
+</div>
+<div class="form_field">
+  <%= form.label :gender, "Gender" %>
+  <%= form.text_field :gender %>
+</div>
+<div class="form_field">
+  <%= form.label :birthday, "Birthday" %>
+  <%= date_select :profile, :birthday, start_year: 1900, end_year: Time.now.year, order: [:day, :month, :year],
+    prompt: { day: "Day", month: "Month", year: "Year" }  %>
+</div>
+<div class="form_field">
+  <%= form.label :country, "Country" %>
+  <%= form.text_field :country %>
+</div>
+<div class="form_field">
+  <%= form.label :address, "Address" %>
+  <%= form.text_field :address %>
+</div>
+<div class="form_field">
+  <%= form.label :city, "City" %>
+  <%= form.text_field :city %>
+</div>
+<div class="form_field">
+  <%= form.label :state, "State" %>
+  <%= form.text_field :state %>
+</div>
+<div class="form_field">
+  <%= form.label :zipcode, "Zipcode" %>
+  <%= form.text_field :zipcode %>
+</div>
+<div class="form_field">
+  <%= form.label :website, "Website" %>
+  <%= form.url_field :website %>
+</div>
+<div class="form_field">
+  <%= form.submit %>
+</div>

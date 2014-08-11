@@ -17,3 +17,7 @@ gem 'bourbon'
 gem 'neat', '~> 1.6.0'
 gem 'bitters'
 gem 'kaminari'
+
+group :development do
+  gem "pry-rails"
+end

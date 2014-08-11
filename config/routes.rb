@@ -8,7 +8,6 @@ require "monban/constraints/signed_out"
   resource :settings, only: [:show]
 
   resources :books, only: [:index, :show, :new, :create]
-  resources :showcase_books, only: [:show]
   resources :snippets, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :feeds, only: [:show]
 
@@ -26,6 +25,7 @@ require "monban/constraints/signed_out"
     resources :partner_relationships, only: [:create, :destroy]
     resources :announcements, only: [:index, :show, :new, :edit]
     resource :showcase, only: [:show]
+    resource :profile, only: [:show, :new, :create, :edit, :update]
   end
 
   get "/sign_up" => "users#new", as: :sign_up

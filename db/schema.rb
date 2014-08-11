@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810153113) do
+ActiveRecord::Schema.define(version: 20140811151907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,26 @@ ActiveRecord::Schema.define(version: 20140810153113) do
   end
 
   add_index "partner_relationships", ["partner_id", "partnered_user_id"], name: "partner_relationships_index_unique_constraint", unique: true, using: :btree
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id",                           null: false
+    t.string   "name",       default: "",           null: false
+    t.string   "pen_name",   default: "",           null: false
+    t.integer  "age",        default: 0,            null: false
+    t.string   "gender",     default: "",           null: false
+    t.date     "birthday",   default: '1910-01-01', null: false
+    t.string   "country",    default: "",           null: false
+    t.string   "address",    default: "",           null: false
+    t.string   "city",       default: "",           null: false
+    t.string   "state",      default: "",           null: false
+    t.integer  "zipcode",    default: 0,            null: false
+    t.string   "website",    default: "",           null: false
+    t.string   "avatar",     default: "",           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "shouts", force: true do |t|
     t.integer  "sender_id",   null: false

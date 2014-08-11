@@ -1,4 +1,6 @@
 <h2>New Announcement</h2>
-<%= form_for @announcement do |form| %>
-  <%= render "form", form: form %>
-<% end %>
+<div class="new_announcement_form">
+  <%= form_for @announcement do |form| %>
+    <%= render "form", form: form %>
+  <% end %>
+</div>
