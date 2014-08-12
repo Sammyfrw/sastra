@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811151907) do
+ActiveRecord::Schema.define(version: 20140811235007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,17 @@ ActiveRecord::Schema.define(version: 20140811151907) do
     t.integer "ISBN_13"
     t.boolean "verified",  default: false, null: false
   end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id",                       null: false
+    t.string   "commentable_type",              null: false
+    t.integer  "commentable_id",                null: false
+    t.text     "text",             default: "", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "partner_relationships", force: true do |t|
     t.integer  "partnered_user_id",                                                     null: false

@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :books
-  has_many :announcements
-  has_many :snippets
+  has_many :announcements, dependent: :destroy
+  has_many :snippets, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :sent_shouts, foreign_key: :sender_id, class_name: "Shout"
   has_many :received_shouts, foreign_key: :receiver_id, class_name: "Shout"

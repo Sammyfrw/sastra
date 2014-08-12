@@ -23,11 +23,14 @@ This page lists the details of a book of a particular ID once it is registered.
     <%= render @book.shops %>
   </ul>
 
-<h3> Comments about this book: </h3>
-<div>
-  "This book is awesome!" -User, date
+<div class="book_comments">
+<h3>Comments</h3>
   <div>
-    <textarea> Insert Comment </textarea>
-    <button>Submit</button>
+    <%= render @comments %>
   </div>
+  <%= form_for [@book, @comment] do |form| %>
+    <%= form.label :text, "New Comment" %>
+    <%= form.text_area :text %>
+    <%= form.submit "Post" %>
+  <% end %>
 </div>

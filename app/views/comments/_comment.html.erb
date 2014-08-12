@@ -1,0 +1,7 @@
+<li>
+  <%= comment.text %> -- <%= link_to comment.user.username, comment.user %>, <%= time_ago_in_words(comment.created_at) %> ago
+  <% if current_user == comment.user %>
+    <%= link_to "Edit Comment", [:edit, comment.commentable, comment] %>
+    <%= button_to "Delete Comment", [comment.commentable, comment], method: :delete %>
+  <% end %>
+</li>

@@ -5,8 +5,10 @@ class AnnouncementsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @announcement = @user.announcements.find(params[:id])
+    @announcement = Announcement.find(params[:id])
+    @user = @announcement.user
+    @comments = @announcement.comments
+    @comment = Comment.new
   end
 
   def new
@@ -14,8 +16,12 @@ class AnnouncementsController < ApplicationController
   end
 
   def create
-    announcement = current_user.announcements.create(announcement_params)
-    redirect_to [current_user, announcement]
+    announcement = current_user.announcements.new(announcement_params)
+    if announcement.save
+      redirect_to announcement
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,8 +30,11 @@ class AnnouncementsController < ApplicationController
 
   def update
     announcement = current_user.announcements.find(params[:id])
-    announcement.update(announcement_params)
-    redirect_to [current_user, announcement]
+    if announcement.update(announcement_params)
+      redirect_to announcement
+    else
+      render :edit
+    end
   end
 
   def destroy

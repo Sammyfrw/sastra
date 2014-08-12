@@ -24,7 +24,7 @@
 <div class="feed">
   <h3> News </h3>
   <% if current_user == @user %>
-    <%= link_to "New Announcement", [:new, @user, :announcement] %>
+    <%= link_to "New Announcement", [:new, :announcement] %>
   <% end %>
   <%= link_to "All Announcements", [@user, @announcement] %>
   <div class="announcements">

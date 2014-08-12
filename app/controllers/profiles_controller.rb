@@ -23,11 +23,10 @@ class ProfilesController < ApplicationController
 
   def update
     profile = current_user.profile
-    profile.assign_attributes(profile_params)
-    if profile.save
+    if profile.update(profile_params)
       redirect_to [current_user, profile]
     else
-      render :new
+      render :edit
     end
   end
 

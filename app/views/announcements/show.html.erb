@@ -5,18 +5,21 @@
   <%= @announcement.body %>
 </div>
 
-<div class="announcement_comment">
-  <h3> Comments </h3>
-  "Comment to announcement with username and date posted"
+<div class="announcement_comments">
+  <h3>Comments</h3>
   <div>
-    <textarea> Insert Comment </textarea>
-    <button>Submit</button>
+    <%= render @comments %>
   </div>
+  <%= form_for [@announcement, @comment] do |form| %>
+    <%= form.label :text, "New Comment" %>
+    <%= form.text_area :text %>
+    <%= form.submit "Post" %>
+  <% end %>
 </div>
 
 <div class="control_buttons">
   <% if current_user == @user %>
-    <%= link_to "Edit Announcement", [:edit, @user, @announcement] %>
+    <%= link_to "Edit Announcement", [:edit, @announcement] %>
     <%= button_to "Delete Announcement", @announcement, method: :delete %>
   <% end %>
 </div>
