@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :flags, as: :flaggable, dependent: :destroy
 
   has_one :profile, dependent: :destroy
+  has_one :feature, dependent: :destroy
+
   has_many :books
   has_many :announcements, dependent: :destroy
   has_many :snippets, dependent: :destroy
@@ -106,5 +108,13 @@ class User < ActiveRecord::Base
 
   def partnered?(other_user)
     partnered_users.include?(other_user) || partners.include?(other_user)
+  end
+
+  def featured_item
+    Feature.where(user_id: user.id)
+  end
+
+  def has_feature?
+    feature
   end
 end

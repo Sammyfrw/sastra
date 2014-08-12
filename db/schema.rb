@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20140818173140) do
     t.string   "image",        default: "", null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+
   end
 
   add_index "features", ["user_id"], name: "index_features_on_user_id", using: :btree

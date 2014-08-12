@@ -10,7 +10,11 @@
   </div>
 
   <div class="profile_banner">
-    "Place Your Banner or Your Featured Showcase Item Here"
+    <% if @user.has_feature? %>
+      <%= render user.featured_item %>
+    <% elsif current_user = @user %>
+      <%= link_to "Add Feature", [:new, :feature] %>
+      <% end %>
   </div>
 
   <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
