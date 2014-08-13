@@ -11,6 +11,10 @@
   <%= form.text_field :pen_name %>
 </div>
 <div class="form_field">
+  <%= form.label "Status" %>
+  <%= form.collection_select :account_type, Profile::ACCOUNT_TYPES, :to_s, :to_s, include_blank: true %>
+</div>
+<div class="form_field">
   <%= form.label :age, "Age" %>
   <%= form.text_field :age %>
 </div>

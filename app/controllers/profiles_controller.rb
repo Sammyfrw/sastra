@@ -4,19 +4,6 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
   end
 
-  def new
-    @profile = current_user.build_profile
-  end
-
-  def create
-    profile = current_user.build_profile(profile_params)
-    if profile.save
-      redirect_to [current_user, profile]
-    else
-      render :new
-    end
-  end
-
   def edit
     @profile = current_user.profile
   end
@@ -24,6 +11,8 @@ class ProfilesController < ApplicationController
   def update
     profile = current_user.profile
     if profile.update(profile_params)
+      profile.account = set_up_account(profile.account_type)
+      profile.save
       redirect_to [current_user, profile]
     else
       render :edit
@@ -36,6 +25,7 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(
       :name,
       :pen_name,
+      :account_type,
       :age,
       :gender,
       :birthday,
@@ -47,5 +37,10 @@ class ProfilesController < ApplicationController
       :website,
       :avatar
     )
+  end
+
+  def set_up_account(account_type)
+    account_class = account_type.constantize
+    account_class.create
   end
 end

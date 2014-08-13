@@ -15,6 +15,10 @@ class UsersController < ApplicationController
 
   def create
     @user = sign_up(user_params)
+    profile = @user.create_profile
+    new_account = Reader.create
+    profile.account = new_account
+    profile.save
 
     if @user.valid?
       sign_in(@user)

@@ -6,6 +6,7 @@
   <ul>
     <li>Name: <%= @profile.name %></li>
     <li>Pen Name: <%= @profile.pen_name %></li>
+    <li>User Type: <%= @profile.account_type %></li>
     <li>Age: <%= @profile.age %></li>
     <li>Gender: <%= @profile.gender %></li>
     <li>Birthday: <%= @profile.birthday %></li>
@@ -17,6 +18,13 @@
     <li>Website: <%= @profile.website %></li>
   </ul>
 </div>
+
+<%= @profile.account %>
+<%= @profile.account %>
+<%= @profile.account %>
+<%= @profile.account %>
+
+
 <% if current_user == @user %>
   <%= link_to "Edit Profile", [:edit, @user, :profile] %>
 <% end %>

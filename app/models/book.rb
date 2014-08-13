@@ -1,6 +1,5 @@
 class Book < ActiveRecord::Base
-  STATUS = ["In-Progress", "Draft", "Last Draft",
-   "Editing", "Finalizing", "Published"]
+  STATUS = %w(In-Progress Draft Final-Draft Editing Finalizing Published)
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :book_authors
