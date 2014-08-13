@@ -1,6 +1,12 @@
 <h2> <%= @book.title %> </h2>
 
-This page lists the details of a book of a particular ID once it is registered.
+<% if @book.authors.exist?(current_user) %>
+  <%= link_to "Edit Book", [:edit, @book] %>
+  <% end %>
+
+<div class="book_image">
+  <%= image_tag @book.image_url.thumb.url %>
+</div>
 
 <ul>
   <li>Title: <%= @book.title %></li>
@@ -16,7 +22,7 @@ This page lists the details of a book of a particular ID once it is registered.
   <li>Published Date: <%= @book.published %></li>
 </ul>
 
-<p><b>Description</b>: This book currently has no description.</p>
+<p><b>Description</b>: <%= @book.description %> </p>
 
 <h3> Shops that sell this book: </h3>
   <ul>

@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   STATUS = %w(In-Progress Draft Final-Draft Editing Finalizing Published)
+  mount_uploader :image_url, ImageUploader
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :book_authors

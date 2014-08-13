@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813183148) do
+ActiveRecord::Schema.define(version: 20140814190354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,15 +73,17 @@ ActiveRecord::Schema.define(version: 20140813183148) do
   add_index "bookmark_relationships", ["bookmarker_id"], name: "index_bookmark_relationships_on_bookmarker_id", using: :btree
 
   create_table "books", force: true do |t|
-    t.string  "title",                     null: false
-    t.string  "genre",                     null: false
-    t.string  "status",                    null: false
-    t.string  "format",                    null: false
+    t.string  "title",                       null: false
+    t.string  "genre",                       null: false
+    t.string  "status",                      null: false
+    t.string  "format",                      null: false
     t.string  "edition"
     t.date    "published"
     t.integer "ISBN_10"
     t.integer "ISBN_13"
-    t.boolean "verified",  default: false, null: false
+    t.boolean "verified",    default: false, null: false
+    t.string  "image_url",   default: "",    null: false
+    t.text    "description", default: "",    null: false
   end
 
   create_table "bookshops", force: true do |t|

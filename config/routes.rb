@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :partner_relationships, only: [:new]
   resources :partners, only: [:show]
 
-  resources :books, only: [:index, :show, :new, :create] do
+  resources :books, only: [:index, :show, :new, :create, :edit, :update] do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
 

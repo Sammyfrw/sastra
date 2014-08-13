@@ -17,7 +17,9 @@ gem 'bourbon'
 gem 'neat', '~> 1.6.0'
 gem 'bitters'
 gem 'kaminari'
+gem 'fog', '~> 1.3.1'
 gem 'carrierwave'
+gem 'rmagick', '2.13.2', require: 'RMagick'
 
 group :development do
   gem 'pry-rails'

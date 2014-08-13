@@ -23,6 +23,20 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+    @users = User.all
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+    if book.update(book_params)
+      redirect_to book
+    else
+      render book
+    end
+  end
+
   private
 
   def book_params
@@ -37,6 +51,8 @@ class BooksController < ApplicationController
       :ISBN_10,
       :ISBN_13,
       :verified,
+      :description,
+      :image_url,
       author_ids: [],
       shop_ids: [],
       publisher_ids: []

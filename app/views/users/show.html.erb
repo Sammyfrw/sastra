@@ -4,8 +4,8 @@
     <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
     <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
   </div>
-  <div class="profile">
-    "Insert Your Profile Picture Here"
+  <div class="profile_avatar">
+    <%= image_tag @user.profile.avatar.thumb.url %>
     <% if @user.has_profile? %>
       <%= link_to "Profile", [@user, :profile] %>
     <% elsif current_user == @user  %>
@@ -13,7 +13,7 @@
     <% end %>
   </div>
 
-  <div class="banner">
+  <div class="profile_banner">
     "Place Your Banner or Your Featured Showcase Item Here"
   </div>
 
