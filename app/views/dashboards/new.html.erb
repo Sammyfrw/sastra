@@ -29,3 +29,10 @@
     <% end %>
   </div>
 </div>
+
+<div class="feed">
+  <h3>My Activity Feed</h3>
+  <ul>
+    <%= render current_user.activities %>
+  </ul>
+</div>

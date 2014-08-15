@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :announcements, dependent: :destroy
   has_many :snippets, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
   has_many :sent_shouts, foreign_key: :sender_id, class_name: "Shout"
   has_many :received_shouts, foreign_key: :receiver_id, class_name: "Shout"
