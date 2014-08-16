@@ -31,6 +31,7 @@ GEM
     aws-sdk (1.51.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    bcrypt (3.1.7)
     bcrypt (3.1.7-x86-mingw32)
     bitters (0.10.0)
       bourbon (>= 3.2)
@@ -97,15 +98,21 @@ GEM
     monban-generators (0.0.2)
       monban (~> 0.0.12)
     multi_json (1.10.1)
-    neat (1.6.0)
-      bourbon (>= 3.1)
-      sass (>= 3.3)
+    neat (1.5.0)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.9.1)
+    nokogiri (1.5.11)
     nokogiri (1.5.11-x86-mingw32)
+    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     pry (0.10.0-x86-mingw32)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -193,7 +200,7 @@ DEPENDENCIES
   kaminari
   monban
   monban-generators
-  neat (~> 1.6.0)
+  neat (~> 1.5.0)
   pg
   pry-rails
   rails (= 4.1.1)
