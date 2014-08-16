@@ -14,7 +14,7 @@ gem 'monban'
 gem 'monban-generators'
 gem 'rails_12factor', group: :production
 gem 'bourbon'
-gem 'neat', '~> 1.6.0'
+gem 'neat', '~> 1.5.0'
 gem 'bitters'
 gem 'kaminari'
 gem 'dotenv-rails'
