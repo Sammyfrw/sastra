@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818132751) do
+ActiveRecord::Schema.define(version: 20140818173140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,15 @@ ActiveRecord::Schema.define(version: 20140818132751) do
   end
 
   add_index "features", ["user_id"], name: "index_features_on_user_id", using: :btree
+
+  create_table "flags", force: true do |t|
+    t.integer "user_id",                     null: false
+    t.string  "flaggable_type", default: "", null: false
+    t.integer "flaggable_id",   default: 0,  null: false
+    t.integer "count",          default: 0,  null: false
+  end
+
+  add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
 
   create_table "partner_relationships", force: true do |t|
     t.integer  "partnered_user_id",                                                     null: false

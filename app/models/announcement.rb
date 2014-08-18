@@ -1,6 +1,7 @@
 class Announcement < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :flags, as: :flaggable, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true

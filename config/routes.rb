@@ -4,26 +4,10 @@ require "monban/constraints/signed_out"
 Rails.application.routes.draw do
   resource :contacts, only: [:show]
   resource :abouts, only: [:show]
-
-  resources :feeds, only: [:show]
-  resources :snippets, only: [:show, :new, :create, :edit, :update, :destroy]
-
-  resources :partner_relationships, only: [:new]
-  resources :partners, only: [:show]
-
-  resources :books, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :comments, only: [:new, :create, :edit, :update, :destroy]
-  end
-
-  resources :announcements, only: [:show, :new, :create, :edit,
-                            :update, :destroy] do
-    resources :comments, only: [:new, :create, :edit, :update, :destroy]
-  end
-
   resource :settings, only: [:show, :update]
 
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:show, :new, :create, :update] do
+  resources :users, only: [:show, :new, :create] do
     resources :announcements, only: [:index]
     resources :shouts, only: [:create, :destroy]
     resource :bookmarkers, only: [:show]
@@ -32,6 +16,25 @@ Rails.application.routes.draw do
     resources :partner_relationships, only: [:create, :destroy]
     resource :showcase, only: [:show]
     resource :profile, only: [:show, :new, :create, :edit, :update]
+    resources :flags, only: [:create, :destroy]
+  end
+
+  resources :feeds, only: [:show]
+  resources :flags, only: [:create, :destroy]
+
+  resources :books, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :flags, only: [:create, :destroy]
+  end
+
+  resources :snippets, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :partner_relationships, only: [:new]
+  resources :partners, only: [:show]
+
+  resources :announcements, only: [:show, :new, :create, :edit,
+                            :update, :destroy] do
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
+    resources :flags, only: [:create, :destroy]
   end
 
   get "/sign_up" => "users#new", as: :sign_up

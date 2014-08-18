@@ -6,11 +6,7 @@
   </div>
   <div class="profile_avatar">
     <%= image_tag @user.profile.avatar.thumb.url %>
-    <% if @user.has_profile? %>
-      <%= link_to "Profile", [@user, :profile] %>
-    <% elsif current_user == @user  %>
-      <%= link_to "Create Profile", [:new, @user, :profile] %>
-    <% end %>
+    <%= link_to "Profile", [@user, :profile] %>
   </div>
 
   <div class="profile_banner">

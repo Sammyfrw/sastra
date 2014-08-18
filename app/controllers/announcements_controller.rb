@@ -9,6 +9,8 @@ class AnnouncementsController < ApplicationController
     @user = @announcement.user
     @comments = @announcement.comments
     @comment = Comment.new
+    @flagged = @announcement.flags.find_by(user_id: current_user.id)
+    @flag = Flag.new
   end
 
   def new

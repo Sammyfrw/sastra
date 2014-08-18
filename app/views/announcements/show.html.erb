@@ -6,6 +6,11 @@
 </div>
 
 <div class="announcement_comments">
+  <% if @flagged %>
+    <%= button_to "Unflag", flag_path, method: :delete %>
+  <% else %>
+    <%= button_to "Flag as inappropriate", [@announcement, @flag] %>
+  <% end %>
   <h3>Comments</h3>
   <div>
     <%= render @comments %>
