@@ -1,6 +1,23 @@
-<h2> My Settings: Generated with JQuery </h2>
-<ul>
-  <li>Profile Settings: Display Name, Titles, Picture settings</li>
-  <li>Account Settings: Password, Verification Settings, Email</li>
-  <li>Notification Settings: Announcements, Shouts, Promotions</li>
-</ul>
+<h2>Settings</h2>
+<div class="settings_tabs">
+  <div class="settings_profile_tab">
+    <%= link_to "Profile", [current_user, :profile] %>
+  </div>
+  <div class="settings_account_tab">
+    Account
+  </div>
+  <div class="settings_notification_tab">
+    Notifications
+  </div>
+  <div class="settings_admin_tab">
+    <% if current_user.admin %>
+      Admin
+    <% end %>
+  </div>
+</div>
+
+<div class="settings_area">
+  <% if current_user.admin %>
+    <%= render "settings_admin" %>
+  <% end %>
+</div>

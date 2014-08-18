@@ -1,0 +1,8 @@
+<h3>Admin</h3>
+  <div class="admin_set">
+    Add new admin
+      <%= form_tag settings_path, method: :patch do  %>
+        <%= collection_select "user", "id", @users, :id, :username, prompt: "Select User" %>
+        <%= submit_tag "Add Admin"%>
+      <% end %>
+  </div>
