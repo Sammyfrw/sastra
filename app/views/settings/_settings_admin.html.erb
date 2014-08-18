@@ -1,7 +1,7 @@
 <h3>Admin</h3>
   <div class="admin_set">
     <h5>Add new admin</h5>
-    <%= form_tag settings_path, method: :patch do  %>
+    <%= form_tag settings_admin_settings_path, method: :patch do  %>
       <%= collection_select "user", "id", @users, :id, :username, prompt: "Select User" %>
       <%= submit_tag "Add Admin"%>
     <% end %>
@@ -9,7 +9,7 @@
 
   <div class="admin_unset">
     <h5>Remove admin</h5>
-    <%= form_tag settings_path, method: :patch do  %>
+    <%= form_tag settings_admin_settings_path, method: :patch do  %>
       <%= collection_select "user", "id", @admins, :id, :username, prompt: "Select User" %>
       <%= submit_tag "Remove Admin"%>
     <% end %>

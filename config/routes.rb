@@ -4,7 +4,9 @@ require "monban/constraints/signed_out"
 Rails.application.routes.draw do
   resource :contacts, only: [:show]
   resource :abouts, only: [:show]
-  resource :settings, only: [:show, :update]
+  resource :settings, only: [:show, :update] do
+    resource :admin_settings, only: [:update]
+  end
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:show, :new, :create] do
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
   end
 
   resources :feeds, only: [:show]
-  resources :flags, only: [:create, :destroy]
 
   resources :books, only: [:index, :show, :new, :create, :edit, :update] do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
   resources :partners, only: [:show]
 
   resources :announcements, only: [:show, :new, :create, :edit,
-                            :update, :destroy] do
+                                   :update, :destroy] do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :flags, only: [:create, :destroy]
   end
