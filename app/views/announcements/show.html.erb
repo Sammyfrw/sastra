@@ -6,7 +6,7 @@
 </div>
 
 <div class="announcement_comments">
-  <%= render "flags/flag_buttons", flaggable: @announcement, flag: @flag, flagged: @flagged %>
+  <%= render "flags/flag_buttons", flaggable: @announcement %>
 
   <h3>Comments</h3>
   <div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="control_buttons">
-  <% if current_user == @user %>
+  <% if current_user.can_edit?(@announcement) %>
     <%= link_to "Edit Announcement", [:edit, @announcement] %>
     <%= button_to "Delete Announcement", @announcement, method: :delete %>
   <% end %>

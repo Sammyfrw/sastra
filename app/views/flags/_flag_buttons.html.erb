@@ -1,5 +1,7 @@
-<% if flagged %>
-    <%= button_to "Unflag", [flaggable, flagged], method: :delete %>
-<% else %>
-    <%= button_to "Report #{flaggable.class}", [flaggable, flag] %>
-<% end %>
+<div class="flag_button">
+  <% if flaggable.flagged_by?(current_user) %>
+    <%= button_to "Unflag", [flaggable, flaggable.flags.find_by(user: current_user)], method: :delete %>
+  <% else %>
+    <%= button_to "Report #{flaggable.class}", [flaggable, Flag.new] %>
+  <% end %>
+</div>

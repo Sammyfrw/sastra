@@ -9,8 +9,6 @@ class AnnouncementsController < ApplicationController
     @user = @announcement.user
     @comments = @announcement.comments
     @comment = Comment.new
-    @flagged = @announcement.flags.find_by(user_id: current_user.id)
-    @flag = Flag.new
   end
 
   def new
@@ -40,9 +38,11 @@ class AnnouncementsController < ApplicationController
   end
 
   def destroy
-    announcement = current_user.announcements.find(params[:id])
-    announcement.destroy
-    redirect_to current_user
+    announcement = Announcement.find(params[:id])
+    if current_user.can_edit?(announcement)
+      announcement.destroy
+      redirect_to current_user
+    end
   end
 
   private

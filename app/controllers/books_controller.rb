@@ -7,8 +7,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @comments = @book.comments
     @comment = Comment.new
-    @flagged = @book.flags.find_by(user_id: current_user.id)
-    @flag = Flag.new
   end
 
   def new
@@ -21,7 +19,7 @@ class BooksController < ApplicationController
     if book.save
       redirect_to book
     else
-      render new
+      render :new
     end
   end
 
@@ -37,6 +35,14 @@ class BooksController < ApplicationController
     else
       render book
     end
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    if current_user.can_edit_book?(book)
+      book.destroy
+    end
+    redirect_to root_path
   end
 
   private

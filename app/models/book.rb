@@ -18,4 +18,8 @@ class Book < ActiveRecord::Base
   validates :status, presence: true
   validates :format, presence: true
   validates :verified, inclusion: { in: [true, false] }
+
+  def flagged_by?(user)
+    flags.exists?(user: user)
+  end
 end

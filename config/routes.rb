@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :feeds, only: [:show]
 
-  resources :books, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :books do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :flags, only: [:create, :destroy]
   end

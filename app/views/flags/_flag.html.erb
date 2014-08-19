@@ -1,4 +1,9 @@
 <ul>
-  <li><%= link_to flag.flaggable.class, flag.flaggable %> -- Reported By <%= link_to flag.user.username, flag.user %>,
-   <%= time_ago_in_words(flag.created_at) %> ago</li>
+  <li>
+    <%= link_to flag.title, flag.flaggable %>
+    -- Reported By <%= link_to flag.user.username, flag.user %>, <%= time_ago_in_words(flag.created_at) %> ago
+    <% if flag.flaggable_type != "User" %>
+      <%= button_to "Delete flagged item", flag.flaggable, method: :delete %>
+    <% end %>
+  </li>
 </ul>

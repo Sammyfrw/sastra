@@ -1,4 +1,4 @@
-<div class="user_context_button">
+<div class="bookmark_button">
   <% if current_user.bookmarked?(user) %>
     <%= button_to "Remove Bookmark", [user, :bookmark_relationship], method: :delete %>
   <% elsif current_user != user %>

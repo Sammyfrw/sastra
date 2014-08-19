@@ -3,7 +3,7 @@
 <% if @book.authors.exists?(current_user) %>
   <%= link_to "Edit Book", [:edit, @book] %>
 <% end %>
-<%= render "flags/flag_buttons", flaggable: @book, flag: @flag, flagged: @flagged %>
+<%= render "flags/flag_buttons", flaggable: @book %>
 
 <div class="book_image">
   <%= image_tag @book.image_url.thumb.url %>

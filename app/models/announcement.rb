@@ -9,6 +9,10 @@ class Announcement < ActiveRecord::Base
 
   after_create :create_feedable
 
+  def flagged_by?(user)
+    flags.exists?(user: user)
+  end
+
   private
 
   def create_feedable

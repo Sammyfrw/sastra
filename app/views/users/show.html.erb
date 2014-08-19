@@ -15,7 +15,7 @@
 
   <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
   <%= render "bookmark_button", user: @user %>
-  <%= render "flags/flag_buttons", flaggable: @user, flag: @flag, flagged: @flagged %>
+  <%= render "flags/flag_buttons", flaggable: @user %>
 </div>
 
 <div class="feed">

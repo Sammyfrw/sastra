@@ -107,4 +107,16 @@ class User < ActiveRecord::Base
   def partnered?(other_user)
     partnered_users.include?(other_user) || partners.include?(other_user)
   end
+
+  def can_edit?(object)
+    admin || id == object.user_id
+  end
+
+  def can_edit_book?(book)
+    admin || book.authors.exists?(self)
+  end
+
+  def flagged_by?(user)
+    flags.exists?(user: user)
+  end
 end
