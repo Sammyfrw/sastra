@@ -50,6 +50,12 @@
   <%= form.label "Bookshops" %>
   <%= form.collection_check_boxes(:shop_ids, @users, :id, :username) %>
 </div>
+<% if current_user.admin? %>
+  <div class="form_field">
+    <%= form.label :verified %>
+    <%= form.check_box :verified %>
+  </div>
+<% end %>
 <div class="form_field">
   <%= form.submit %>
 </div>

@@ -30,7 +30,10 @@ class BooksController < ApplicationController
 
   def update
     book = Book.find(params[:id])
-    if book.update(book_params)
+    if current_user.admin?
+      book.update(book_params.merge(verified: params[:book][:verified]))
+      redirect_to book
+    elsif book.update(book_params)
       redirect_to book
     else
       render book
@@ -58,7 +61,6 @@ class BooksController < ApplicationController
       :published,
       :ISBN_10,
       :ISBN_13,
-      :verified,
       :description,
       :image_url,
       author_ids: [],
