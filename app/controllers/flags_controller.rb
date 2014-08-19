@@ -1,7 +1,10 @@
 class FlagsController < ApplicationController
   def create
     flaggable = find_flaggable
-    flag = flaggable.flags.create(user_id: current_user.id)
+    if flaggable.flags.find_by(user_id: current_user.id)
+    else
+      flag = flaggable.flags.create(user_id: current_user.id)
+    end
     redirect_to flaggable
   end
 

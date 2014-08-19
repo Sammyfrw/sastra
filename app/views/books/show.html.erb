@@ -1,8 +1,9 @@
 <h2> <%= @book.title %> </h2>
 
-<% if @book.authors.exist?(current_user) %>
+<% if @book.authors.exists?(current_user) %>
   <%= link_to "Edit Book", [:edit, @book] %>
-  <% end %>
+<% end %>
+<%= render "flags/flag_buttons", flaggable: @book, flag: @flag, flagged: @flagged %>
 
 <div class="book_image">
   <%= image_tag @book.image_url.thumb.url %>

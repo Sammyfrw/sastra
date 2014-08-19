@@ -7,6 +7,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @comments = @book.comments
     @comment = Comment.new
+    @flagged = @book.flags.find_by(user_id: current_user.id)
+    @flag = Flag.new
   end
 
   def new

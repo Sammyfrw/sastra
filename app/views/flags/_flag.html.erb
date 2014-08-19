@@ -1,3 +1,4 @@
 <ul>
-  <li><%= link_to flag.flaggable.title, flag.flaggable %></li>
+  <li><%= link_to flag.flaggable.class, flag.flaggable %> -- Reported By <%= link_to flag.user.username, flag.user %>,
+   <%= time_ago_in_words(flag.created_at) %> ago</li>
 </ul>

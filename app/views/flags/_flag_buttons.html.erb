@@ -1,5 +1,5 @@
 <% if flagged %>
     <%= button_to "Unflag", [flaggable, flagged], method: :delete %>
 <% else %>
-    <%= button_to "Flag as inappropriate", [flaggable, flag] %>
+    <%= button_to "Report #{flaggable.class}", [flaggable, flag] %>
 <% end %>

@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @shouts = @user.ordered_shouts
     @announcements = @user.ordered_announcements
     @announcement = Announcement.new
+    @flagged = @user.flags.find_by(user_id: current_user.id)
+    @flag = Flag.new
   end
 
   def create
