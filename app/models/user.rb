@@ -87,6 +87,10 @@ class User < ActiveRecord::Base
     Shout.where("sender_id = ? OR receiver_id = ?", id, id)
   end
 
+  def self.query(search_term)
+    where("username ILIKE ?", "%#{search_term}%")
+  end
+
   def bookmark(other_user)
     bookmarked_users << other_user
   end

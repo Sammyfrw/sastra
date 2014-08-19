@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     resource :admin_settings, only: [:update]
     resource :lock_users, only: [:update]
   end
-
+  resource :search, only: [:show]
   resource :lock, only: [:show]
   resource :session, only: [:new, :create, :destroy]
+
   resources :users, only: [:show, :new, :create] do
     resources :announcements, only: [:index]
     resources :shouts, only: [:create, :destroy]
