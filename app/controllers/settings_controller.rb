@@ -1,7 +1,10 @@
 class SettingsController < ApplicationController
   def show
-    @users = User.where(admin: false).order(username: :asc)
-    @admins = User.where(admin: true).order(username: :asc)
+    users = User.order(username: :asc)
+    @non_admins = users.where(admin: false)
+    @admins = users.where(admin: true)
+    @unlocked_users = users.where(locked: false)
+    @locked_users = users.where(locked: true)
     @flags = Flag.all
   end
 end

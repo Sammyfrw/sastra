@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resource :abouts, only: [:show]
   resource :settings, only: [:show, :update] do
     resource :admin_settings, only: [:update]
+    resource :lock_users, only: [:update]
   end
 
+  resource :lock, only: [:show]
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:show, :new, :create] do
     resources :announcements, only: [:index]
@@ -41,6 +43,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: :sign_up
   get "/sign_in" => "sessions#new", as: :sign_in
   get "/sign_out" => "sessions#destroy", as: :sign_out
+  get "/locked" => "lock#show", as: :locked_user
 
 constraints Monban::Constraints::SignedIn.new do
   root to: "dashboards#new", as: :dashboard do
