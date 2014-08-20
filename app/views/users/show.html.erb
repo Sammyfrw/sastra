@@ -1,5 +1,7 @@
-<h2><%= @user.username %></h2>
 <div class="user_info">
+  <h2><%= @user.username %></h2>
+  <%= render "bookmark_button", user: @user %>
+  <%= render "flags/flag_buttons", flaggable: @user %>
   <div class="bookmark_links">
     <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
     <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
@@ -11,35 +13,34 @@
 
   <div class="profile_banner">
     "Place Your Banner or Your Featured Showcase Item Here"
-  </div>
-
-  <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
-  <%= render "bookmark_button", user: @user %>
-  <%= render "flags/flag_buttons", flaggable: @user %>
-</div>
-
-<div class="feed">
-  <h3> News </h3>
-  <% if current_user == @user %>
-    <%= link_to "New Announcement", [:new, :announcement] %>
-  <% end %>
-  <%= link_to "All Announcements", [@user, @announcement] %>
-  <div class="announcements">
-    <ul>
-      <%= render @announcements, user: @user, announcements: @announcements %>
-    </ul>
+    <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
   </div>
 </div>
 
-<div class="feed">
-  <h3>Shoutbox</h3>
-  <div class="shouts">
-      <%= render @shouts %>
-  </div>
-  <div class="shout_entry">
-    <%= form_for [@user, @shout] do |form| %>
-      <%= form.text_area :body, size: "30x3" %>
-      <%= form.submit "New shout" %>
+<div class="user_feed">
+  <div class="feed">
+    <h3> News </h3>
+    <% if current_user == @user %>
+      <%= button_to "New Announcement", [:new, :announcement], method: :get %>
     <% end %>
+    <%= link_to "All Announcements", [@user, @announcement] %>
+    <div class="announcements">
+      <ul>
+        <%= render @announcements, user: @user, announcements: @announcements %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feed">
+    <h3>Shoutbox</h3>
+    <div class="shouts">
+        <%= render @shouts %>
+    </div>
+    <div class="shout_entry">
+      <%= form_for [@user, @shout] do |form| %>
+        <%= form.text_area :body, size: "30x3" %>
+        <%= form.submit "New shout" %>
+      <% end %>
+    </div>
   </div>
 </div>

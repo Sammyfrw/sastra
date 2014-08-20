@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819193835) do
+ActiveRecord::Schema.define(version: 20140821174747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: true do |t|
-    t.integer "user_id",       null: false
-    t.integer "feedable_id",   null: false
-    t.string  "feedable_type", null: false
+    t.integer  "user_id",       null: false
+    t.integer  "feedable_id",   null: false
+    t.string   "feedable_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
@@ -81,17 +83,19 @@ ActiveRecord::Schema.define(version: 20140819193835) do
   add_index "bookmark_relationships", ["bookmarker_id"], name: "index_bookmark_relationships_on_bookmarker_id", using: :btree
 
   create_table "books", force: true do |t|
-    t.string  "title",                       null: false
-    t.string  "genre",                       null: false
-    t.string  "status",                      null: false
-    t.string  "format",                      null: false
-    t.string  "edition"
-    t.date    "published"
-    t.integer "ISBN_10"
-    t.integer "ISBN_13"
-    t.boolean "verified",    default: false, null: false
-    t.string  "image_url",   default: "",    null: false
-    t.text    "description", default: "",    null: false
+    t.string   "title",                       null: false
+    t.string   "genre",                       null: false
+    t.string   "status",                      null: false
+    t.string   "format",                      null: false
+    t.string   "edition"
+    t.date     "published"
+    t.integer  "ISBN_10"
+    t.integer  "ISBN_13"
+    t.boolean  "verified",    default: false, null: false
+    t.string   "image_url",   default: "",    null: false
+    t.text     "description", default: "",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bookshops", force: true do |t|
@@ -109,17 +113,6 @@ ActiveRecord::Schema.define(version: 20140819193835) do
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "features", force: true do |t|
-    t.integer  "user_id",                   null: false
-    t.string   "feature_type",              null: false
-    t.integer  "feature_id",                null: false
-    t.string   "image",        default: "", null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  add_index "features", ["user_id"], name: "index_features_on_user_id", using: :btree
 
   create_table "flags", force: true do |t|
     t.integer  "user_id",                     null: false

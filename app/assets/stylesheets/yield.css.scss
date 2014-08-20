@@ -1,8 +1,5 @@
-#yield {
+.yield{
   @include outer-container;
-}
-
-.feed {
-  @include span-columns (4);
-  float:left;
+  border: double grey;
+  @include background(linear-gradient(#CCB299, #C2A366) left center no-repeat);
 }

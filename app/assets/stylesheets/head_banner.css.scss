@@ -1,32 +1,8 @@
-#head_banner {
+.head_banner {
   @include outer-container;
+  margin-bottom: 40px;
 }
 
-#head_banner div {
+.head_banner div{
   @include span-columns(3);
-  /*text-align: center;*/
-  margin-bottom: 3m;
 }
-
-/*
-.session_header {
-  float:left;
-}
-
-.profile {
-  float:left;
-}
-
-
-.contact_us {
-  float:left;
-}
-
-.about_us {
-  float:left;
-}
-
-.search {
-  float:left;
-}
-*/

@@ -1,38 +1,41 @@
-<div class="profile_avatar">
-  <%= image_tag current_user.profile.avatar.thumb.url %>
-</div>
+<div class= "dashboard_profiles">
+  <div class="profile_avatar">
+    <%= image_tag current_user.profile.avatar.thumb.url %>
+  </div>
 
-<div class="profile_banner">
-  "Place Your Banner or Your Featured Showcase Item Here"
+  <div class="profile_banner">
+    "Place Your Banner or Your Featured Showcase Item Here"
+  </div>
 </div>
+<div class="dashboard_feed">
+  <div class="feed">
+    <h3>News</h3>
+    <%= button_to "New Announcement", [:new, :announcement], method: :get %>
+    <%= link_to "All Announcements", [current_user, @announcement] %>
+    <div class="announcements">
+      <ul>
+        <%= render current_user.ordered_announcements, user: current_user %>
+      </ul>
+    </div>
+  </div>
 
-<div class="feed">
-  <h3>News</h3>
-  <%= link_to "New Announcement", [:new, :announcement] %>
-  <%= link_to "All Announcements", [current_user, @announcement] %>
-  <div class="announcements">
+  <div class="feed">
+    <h3>Shoutbox</h3>
+    <div class="shouts">
+      <%= render current_user.ordered_shouts, user: current_user %>
+    </div>
+    <div class="shout_entry">
+      <%= form_for [current_user, @shout] do |form| %>
+        <%= form.text_area :body, size: "30x3" %>
+        <%= form.submit "New shout" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="feed">
+    <h3>My Activity Feed</h3>
     <ul>
-      <%= render current_user.ordered_announcements, user: current_user %>
+      <%= render @activities %>
     </ul>
   </div>
-</div>
-
-<div class="feed">
-  <h3>Shoutbox</h3>
-  <div class="shouts">
-    <%= render current_user.ordered_shouts, user: current_user %>
-  </div>
-  <div class="shout_entry">
-    <%= form_for [current_user, @shout] do |form| %>
-      <%= form.text_area :body, size: "30x3" %>
-      <%= form.submit "New shout" %>
-    <% end %>
-  </div>
-</div>
-
-<div class="feed">
-  <h3>My Activity Feed</h3>
-  <ul>
-    <%= render @activities %>
-  </ul>
 </div>

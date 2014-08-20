@@ -16,13 +16,13 @@ class UsersController < ApplicationController
 
   def create
     @user = sign_up(user_params)
-    profile = @user.create_profile(user_id: @user.id)
-    new_account = Reader.create
-    profile.account = new_account
-    profile.save
 
     if @user.valid?
       sign_in(@user)
+      profile = @user.create_profile(user_id: @user.id)
+      new_account = Reader.create
+      profile.account = new_account
+      profile.save
       redirect_to root_path
     else
       render :new

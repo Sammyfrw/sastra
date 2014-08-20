@@ -77,8 +77,14 @@ class User < ActiveRecord::Base
   has_many :owned_books, through: :book_owners, source: :book,
     dependent: :destroy
 
-  validates :username, uniqueness: true, presence: true
-  validates :password_digest, presence: true
+  validates :username, uniqueness: true, presence: true,
+                        format: { with: /\A[a-zA-Z]+\z/, message: "Please use only letters" },
+                        length: { minimum: 3,
+                                  maximum: 20,
+                                  wrong_length: "Please input a username between 3 to 20 letters." }
+  validates :password_digest, presence: true,
+                        length: { minimum: 6,
+                                  wrong_length: "Please input a password with 6 or more characters." }
   validates :admin, inclusion: { in: [true, false] }
   validates :locked, inclusion: { in: [true, false] }
 

@@ -1,0 +1,34 @@
+.dashboard_profiles {
+  @include span-columns(12);
+  border-style: none none double;
+  border-color: black;
+  margin-bottom: 30px;
+}
+
+.user_info {
+  @include outer-container;
+}
+
+.profile_avatar {
+  @include span-columns (4 of 12);
+}
+
+.profile_banner {
+  @include span-columns (8 of 12);
+}
+
+.dashboard_feed {
+  @include span-columns(12);
+}
+
+.user_feed {
+  @include span-columns(12);
+
+}
+
+.feed {
+  @include span-columns (4 of 12);
+  padding: 10px;
+  border-style: none double;
+  border-color: grey;
+}
