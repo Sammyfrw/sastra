@@ -1,8 +1,17 @@
 .head_banner {
   @include outer-container;
+  @include background(linear-gradient(#8A9EA6, #8A9EA6) left center no-repeat);
   margin-bottom: 40px;
+  border: double grey;
+  }
+
+.site_title_link {
+  @include span-columns(2);
+}
+.session_header {
+  @include span-columns(6);
 }
 
-.head_banner div{
-  @include span-columns(3);
-}
+#name {
+  @include span-columns(2);
+  }

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @profile = @user.profile
     @shout = Shout.new
     @shouts = @user.ordered_shouts
     @announcements = @user.ordered_announcements

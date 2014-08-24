@@ -1,10 +1,12 @@
-<h3>Snippets</h3>
-<% if user == current_user %>
-  <%= link_to "Add new snippet", [:new, :snippet] %>
-<% end %>
-<div>
-  <h4><%= user.username %>'s Snippets</h4>
-  <ul>
-    <%= render user.snippets %>
-  </ul>
+<div class="showcase_section">
+  <h3>Snippets</h3>
+  <% if user == current_user %>
+    <%= link_to "Add new snippet", [:new, :snippet] %>
+  <% end %>
+  <div>
+    <h4><%= user.username %>'s Snippets</h4>
+    <ul>
+      <%= render user.snippets %>
+    </ul>
+  </div>
 </div>

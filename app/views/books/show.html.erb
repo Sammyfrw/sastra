@@ -1,37 +1,48 @@
 <h2> <%= @book.title %> </h2>
 
-<% if @book.authors.exists?(current_user) %>
-  <%= link_to "Edit Book", [:edit, @book] %>
-<% end %>
-<%= render "flags/flag_buttons", flaggable: @book %>
-
 <div class="book_image">
   <%= image_tag @book.image_url.thumb.url %>
 </div>
+<%= render "flags/flag_buttons", flaggable: @book %>
 
-<ul>
-  <li>Verified: <%= @book.verified %></li>
-  <li>Title: <%= @book.title %></li>
-  <li>Author: <%= render @book.authors %></li>
-  <li>Genre: <%= @book.genre %></li>
-  <li>Status: <%= @book.status %></li>
-  <li>Edition: <%= @book.edition %></li>
-  <li>Format: <%= @book.format %></li>
-  <li>ISBN-10: <%= @book.ISBN_10%></li>
-  <li>ISBN-13: <%= @book.ISBN_13%></li>
+<% if @book.authors.exists?(current_user) %>
+  <%= link_to "Edit Book", [:edit, @book] %>
+<% end %>
 
-  <li>Publisher: <%= render @book.publishers %></li>
-  <li>Published Date: <%= @book.published %></li>
-</ul>
+<div class="book_info">
+  <ul>
+    <li>
+      Verified:
+      <% if @book.verified %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    </li>
+    <li>Title: <%= @book.title %></li>
+    <li>Author: <%= render @book.authors %></li>
+    <li>Genre: <%= @book.genre %></li>
+    <li>Status: <%= @book.status %></li>
+    <li>Edition: <%= @book.edition %></li>
+    <li>Format: <%= @book.format %></li>
+    <li>ISBN-10: <%= @book.ISBN_10%></li>
+    <li>ISBN-13: <%= @book.ISBN_13%></li>
 
-<p><b>Description</b>: <%= @book.description %> </p>
+    <li>Publisher: <%= render @book.publishers %></li>
+    <li>Published Date: <%= @book.published %></li>
+  </ul>
 
+  <p><b>Description</b>: <%= @book.description %> </p>
+</div>
+
+<div class="book_shops">
 <h3> Shops that sell this book: </h3>
   <ul>
     <%= render @book.shops %>
   </ul>
+</div>
 
-<div class="book_comments">
+<div class="comment_form">
 <h3>Comments</h3>
   <div>
     <%= render @comments %>

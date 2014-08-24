@@ -1,3 +1,8 @@
-<div class="feed_message">
-  <li><%= activity.user.username %> has made a new announcement, <%= link_to activity.title, activity %></li>
+<div class="feed_item">
+  <li><%= activity.user.username %> has made a new announcement, <%= link_to activity.title, activity %>
+    <br>
+    <span class="timestamp">
+      --<%= time_ago_in_words(activity.created_at) %>
+    </span>
+  </li>
 </div>

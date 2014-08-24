@@ -1,20 +1,25 @@
 .dashboard_profiles {
   @include span-columns(12);
-  border-style: none none double;
-  border-color: black;
   margin-bottom: 30px;
+  border-style: none none double;
+  border-color: grey;
 }
 
 .user_info {
   @include outer-container;
+  margin-bottom: 30px;
+  border-style: none none double;
+  border-color: grey;
 }
 
 .profile_avatar {
   @include span-columns (4 of 12);
+  margin-top: 10px;
 }
 
 .profile_banner {
   @include span-columns (8 of 12);
+  margin-top: 10px;
 }
 
 .dashboard_feed {
@@ -23,7 +28,6 @@
 
 .user_feed {
   @include span-columns(12);
-
 }
 
 .feed {
@@ -31,4 +35,17 @@
   padding: 10px;
   border-style: none double;
   border-color: grey;
+}
+
+.feed_item li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-style: none none solid;
+  border-color: grey;
+}
+
+.timestamp {
+  font-color: grey;
+  font-style: italic;
+  font-size: 12px;
 }

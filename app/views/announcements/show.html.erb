@@ -1,13 +1,21 @@
-<h2><%= @announcement.title %></h2>
-<h4>by <%= link_to @user.username, @user %></h4>
+<h2><%= @announcement.title %>
+  <span class="announcement_poster">
+    by <%= link_to @user.username, @user %> at <%= @announcement.created_at.strftime("%A, %d %B %Y at %I:%M %P") %>
+    <div class="control_buttons">
+      <% if current_user.can_edit?(@announcement) %>
+        <%= link_to "Edit Announcement", [:edit, @announcement] %>
+        <%= button_to "Delete Announcement", @announcement, method: :delete %>
+      <% end %>
+      <%= render "flags/flag_buttons", flaggable: @announcement %>
+    </div>
+  </span>
+</h2>
 
 <div class="announcement_body">
   <%= @announcement.body %>
 </div>
 
-<div class="announcement_comments">
-  <%= render "flags/flag_buttons", flaggable: @announcement %>
-
+<div class="comment_form">
   <h3>Comments</h3>
   <div>
     <%= render @comments %>
@@ -19,9 +27,3 @@
   <% end %>
 </div>
 
-<div class="control_buttons">
-  <% if current_user.can_edit?(@announcement) %>
-    <%= link_to "Edit Announcement", [:edit, @announcement] %>
-    <%= button_to "Delete Announcement", @announcement, method: :delete %>
-  <% end %>
-</div>

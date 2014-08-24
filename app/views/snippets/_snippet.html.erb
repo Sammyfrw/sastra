@@ -1,4 +1,15 @@
-<li><p><%= snippet.snippet_text %> -<%= snippet.snippet_source %>, <%= "#{snippet.book}, #{snippet.chapter}, #{snippet.page}" %>
-  <%= button_to "Delete Snippet", snippet, method: :delete %>
-  <%= link_to "Edit Snippet", [:edit, snippet] %>
-</p></li>
+<div class="snippet_item">
+  <li>
+    <blockquote>
+      <%= snippet.snippet_text %>
+      <br>
+      <span class="snippet_source">
+        --<%= snippet.snippet_source %>, "<%= "#{snippet.book}, Chapter #{snippet.chapter}, Page #{snippet.page}" %>
+      </span>
+    </blockquote>
+    <div class="snippet_buttons">
+      <%= button_to "Delete Snippet", snippet, method: :delete %>
+      <%= link_to "Edit Snippet", [:edit, snippet] %>
+    </div>
+  </li>
+</div>

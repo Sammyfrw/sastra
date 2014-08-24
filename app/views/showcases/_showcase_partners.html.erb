@@ -1,20 +1,22 @@
-<h3>Partners</h3>
-<div class="partner_list">
-<% if user == current_user %>
-  <%= link_to "Add new partner", [:new, :partner_relationship] %>
-  <h5>Pending Partner Invitations</h5>
-  <p>These are partner invitations that you've received that are awaiting a response. </p>
-  <%= render user.pending_partners %>
+<div class="showcase_section">
+  <h3>Partners</h3>
+  <div class="partner_list">
+  <% if user == current_user %>
+    <%= link_to "Add new partner", [:new, :partner_relationship] %>
+    <h5>Pending Partner Invitations</h5>
+    <p>These are partner invitations that you've received that are awaiting a response. </p>
+    <%= render user.pending_partners %>
 
-  <h5>Pending Partner Invites</h5>
-  <p>These are partner invitations that you've sent but you are waiting on a response for.</p>
-  <%= render user.pending_partnered_users %>
-<% end %>
+    <h5>Pending Partner Invites</h5>
+    <p>These are partner invitations that you've sent but you are waiting on a response for.</p>
+    <%= render user.pending_partnered_users %>
+  <% end %>
 
-  <h5> Accepted Partners </h5>
-  <p>These are partner invitations that you've received that have been accepted.</p>
-  <%= render user.accepted_partners %>
+    <h5> Accepted Partners </h5>
+    <p>These are partner invitations that you've received that have been accepted.</p>
+    <%= render user.accepted_partners %>
 
-  <p>These are partner invitations that you've sent that have been accepted. </p>
-  <%= render user.accepted_partnered_users %>
+    <p>These are partner invitations that you've sent that have been accepted. </p>
+    <%= render user.accepted_partnered_users %>
+  </div>
 </div>

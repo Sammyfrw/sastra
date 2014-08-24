@@ -1,3 +1,15 @@
  body {
-  @include background(linear-gradient(#C2A366, #D6C299) left center no-repeat);
+  @include background(linear-gradient(#F2DCC2, #F2DCC2) no-repeat center center fixed);
  }
+
+h2 {
+  border-style: none none double;
+  border-color: grey;
+  margin-bottom: 30px;
+}
+
+h3 {
+  border-style: none none double;
+  border-color: grey;
+  margin-bottom: 30px;
+}

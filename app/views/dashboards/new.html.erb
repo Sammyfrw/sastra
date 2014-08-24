@@ -22,7 +22,9 @@
   <div class="feed">
     <h3>Shoutbox</h3>
     <div class="shouts">
-      <%= render current_user.ordered_shouts, user: current_user %>
+      <ul>
+        <%= render current_user.ordered_shouts, user: current_user %>
+      </ul>
     </div>
     <div class="shout_entry">
       <%= form_for [current_user, @shout] do |form| %>

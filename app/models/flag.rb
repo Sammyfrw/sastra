@@ -4,7 +4,11 @@ class Flag < ActiveRecord::Base
 
   validates :user_id, presence: true
 
-  def title
-    flaggable.username || flaggable.title
+  def name
+    if flaggable.class == User
+      flaggable.username
+    else
+      flaggable.title
+    end
   end
 end

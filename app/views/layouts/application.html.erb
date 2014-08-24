@@ -22,23 +22,22 @@
           | <%= link_to "Settings", settings_path %> |
         <% end %>
       <% else %>
-      | <%= link_to "Sign In", sign_in_path %> |
-      | <%= link_to "Sign Up", sign_up_path %> |
-      <% end%>
-    </div>
-
-    <div class = "about_contact_us">
+        | <%= link_to "Sign In", sign_in_path %> |
+        | <%= link_to "Sign Up", sign_up_path %> |
+      <% end %>
       | <%=link_to "About Us", abouts_path%> |
       | <%= link_to "Contact Us", contacts_path%> |
     </div>
 
     <div class="search_bar">
-      <%= form_tag("/search", method: "get") do%>
-        <%= text_field_tag :name, "Search Users..." %>
-        <%= submit_tag "Search" %>
-      <%end%>
+      <% if signed_in?%>
+        <%= form_tag("/search", method: "get") do%>
+          <%= text_field_tag :name, "Search Users..." %>
+          <%= submit_tag "Search" %>
+        <% end %>
+      <% end %>
     </div>
-  </div>
+</div>
 
   <div class = "yield">
     <%= yield %>

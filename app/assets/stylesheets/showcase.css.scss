@@ -1,17 +1,22 @@
 .showcase_tabs {
-  float: left;
-  margin: 30px
+  @include span-columns(2);
+  border-style: none double none;
+  border-color: grey;
 }
 
 .showcase_tabs div {
   margin: 10px;
+  border-style: none none double;
+  border-color: grey;
 }
 
 .showcase_area {
+  @include span-columns(9);
   margin: 10px;
-  float: left;
 }
 
-.showcase_area div {
-  margin: 10px;
+.showcase_section {
+  margin: 20px;
+  border-style: none none double;
+  border-color: grey;
 }

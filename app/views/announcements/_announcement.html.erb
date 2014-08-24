@@ -1,3 +1,9 @@
-<li>
-  <%= link_to announcement.title, announcement %>
-</li>
+<div class="feed_item">
+  <li>
+    <%= link_to announcement.title, announcement %>
+    <br>
+    <span class="timestamp">
+      --created <%= time_ago_in_words(announcement.created_at)%> ago
+    </span>
+  </li>
+</div>

@@ -4,7 +4,7 @@
     <%= link_to "Books", [@user, :showcase] %>
   </div>
   <div class="showcase_snippet_tab">
-    Snippets
+    <%= link_to "Snippets", [@user, :showcase] %>
   </div>
   <div class="showcase_partner_tab">
     <%= link_to "Partners", [@user, :showcase] %>
@@ -13,6 +13,6 @@
 
 <div class="showcase_area">
   <%= render "showcase_books", user: @user %>
-  <%= render "showcase_partners", user: @user %>
   <%= render "showcase_snippets", user: @user %>
+  <%= render "showcase_partners", user: @user %>
 </div>

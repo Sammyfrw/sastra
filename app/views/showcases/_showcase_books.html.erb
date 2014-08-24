@@ -1,13 +1,13 @@
-<h3>Books</h3>
-<% if user == current_user %>
-  <%= link_to "Add new book", [:new, :book] %>
-<% end %>
+<div class="showcase_section">
+  <h3>Books</h3>
+  <% if user == current_user %>
+    <%= link_to "Add new book", [:new, :book] %>
+  <% end %>
 
-<div class="book_list">
-  <h4>Books Written by <%= user.username %></h4>
-  <ul>
-    <% user.authored_books.each do |book| %>
-      <li><%= link_to book.title, book %></li>
-    <% end %>
-  </ul>
+  <div class="book_list">
+    <h4>Books Written by <%= user.username %></h4>
+    <ul>
+      <%= render user.authored_books %>
+    </ul>
+  </div>
 </div>
