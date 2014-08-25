@@ -4,4 +4,5 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   belongs_to :account, polymorphic: true
   mount_uploader :avatar, ImageUploader
+  mount_uploader :banner, ImageUploader
 end

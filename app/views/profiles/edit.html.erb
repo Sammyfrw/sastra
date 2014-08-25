@@ -1,6 +1,6 @@
 <h2>Edit Profile</h2>
 <div class="form">
   <%= form_for @profile, url: user_profile_path do |form| %>
-    <%= render "form", form: form %>
+    <%= render "form", form: form, profile: @profile %>
   <% end %>
 </div>

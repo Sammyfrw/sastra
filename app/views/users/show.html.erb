@@ -2,9 +2,10 @@
   <h2><%= @user.username %></h2>
   <%= render "bookmark_button", user: @user %>
   <%= render "flags/flag_buttons", flaggable: @user %>
-  <div class="bookmark_links">
-    <%= link_to "Bookmarks", [@user, :bookmarked_users] %>
-    <%= link_to "Bookmarkers", [@user, :bookmarkers] %>
+  <div class="user_links">
+    <%= link_to "Bookmarks", [@user, :bookmarked_users] %> |
+    <%= link_to "Bookmarkers", [@user, :bookmarkers] %> |
+    <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
   </div>
 
   <div class="profile_avatar">
@@ -12,8 +13,7 @@
   </div>
 
   <div class="profile_banner">
-    "Place Your Banner or Your Featured Showcase Item Here"
-    <%= link_to "#{@user.username}'s Showcase", [@user, :showcase] %>
+    <%= image_tag @profile.banner.banner.url %>
   </div>
 </div>
 
@@ -23,10 +23,9 @@
     <h3>Profile</h3>
     <div class="profile">
       <% if current_user == @user %>
-        <%= link_to "Edit Profile", [:edit, @user, :profile] %>
-      <% else %>
-        <%= link_to "View Full Profile", [@user, :profile] %>
+        <%= link_to "Edit Profile", [:edit, @user, :profile] %> |
       <% end %>
+      <%= link_to "View Full Profile", [@user, :profile] %>
       <ul>
         <li>Name: <%= @profile.name %></li>
         <li>Pen Name: <%= @profile.pen_name %></li>

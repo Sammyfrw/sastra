@@ -14,19 +14,19 @@
 
     <div class="session_header">
       <% if signed_in?%>
-      | <%= link_to current_user.username, current_user %> |
-      | <%= link_to "Sign Out", sign_out_path%> |
+      <%= link_to current_user.username, current_user %> |
+      <%= link_to "Sign Out", sign_out_path%> |
         <% if current_user.admin %>
-          | <%= link_to "Settings(A)", settings_path %> |
+          <%= link_to "Settings(A)", settings_path %> |
           <% else %>
-          | <%= link_to "Settings", settings_path %> |
+          <%= link_to "Settings", settings_path %> |
         <% end %>
       <% else %>
-        | <%= link_to "Sign In", sign_in_path %> |
-        | <%= link_to "Sign Up", sign_up_path %> |
+        <%= link_to "Sign In", sign_in_path %> |
+        <%= link_to "Sign Up", sign_up_path %> |
       <% end %>
-      | <%=link_to "About Us", abouts_path%> |
-      | <%= link_to "Contact Us", contacts_path%> |
+      <%=link_to "About Us", abouts_path%> |
+      <%= link_to "Contact Us", contacts_path%>
     </div>
 
     <div class="search_bar">

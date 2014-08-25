@@ -35,7 +35,8 @@ class ProfilesController < ApplicationController
       :state,
       :zipcode,
       :website,
-      :avatar
+      :avatar,
+      :banner
     )
   end
 

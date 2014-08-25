@@ -1,6 +1,14 @@
 <div class="form_field">
+  <%= image_tag(profile.avatar.small_thumb) %>
   <%= form.label :avatar, "Avatar" %>
   <%= form.file_field :avatar %>
+  Avatar images should be approximately 200x200px in size.<br>
+</div>
+<div class="form_field">
+  <%= image_tag(profile.banner.small_banner) %>
+  <%= form.label :banner, "Banner Image" %>
+  <%= form.file_field :banner %>
+  Banner images should be approximately 800x200px insize.<br>
 </div>
 <div class="form_field">
   <%= form.label :name, "Full Name" %>
