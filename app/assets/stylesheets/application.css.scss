@@ -5,7 +5,10 @@
 
 @import "site_title";
 @import "head_banner";
+@import "notices";
 @import "app_styles";
+@import "yield";
+
 @import "book";
 @import "announcement";
 @import "showcase";
@@ -14,7 +17,6 @@
 @import "dash_users";
 @import "forms";
 @import "snippet";
-@import "yield";
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

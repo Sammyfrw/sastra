@@ -37,7 +37,17 @@
         <% end %>
       <% end %>
     </div>
-</div>
+  </div>
+
+  <div class="flash_notices">
+    <% if flash.any? %>
+      <% flash.each do |key, value| %>
+        <div class="flash-<%= key %>">
+         <%= flash[key] %>
+       </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class = "yield">
     <%= yield %>

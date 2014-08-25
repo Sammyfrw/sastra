@@ -1,0 +1,8 @@
+ .flash_notices {
+  @include outer-container;
+ }
+
+.flash_notices div{
+  @include column-span(6);
+  text-align: center;
+ }
