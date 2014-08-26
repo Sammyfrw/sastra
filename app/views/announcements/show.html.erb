@@ -1,31 +1,30 @@
-<h2><%= @announcement.title %>
-  <span class="announcement_poster">
+<h2><%= @announcement.title %></h2>
+<div class="announcement_head">
+  <div class="announcement_poster">
     by <%= link_to @user.username, @user %> at <%= @announcement.created_at.strftime("%A, %d %B %Y at %I:%M %P") %>
-    <div class="control_buttons">
-      <% if current_user.can_edit?(@announcement) %>
-        <%= button_to "Edit Announcement", [:edit, @announcement], method: :get %>
-        <%= button_to "Delete Announcement", @announcement, method: :delete %>
-      <% end %>
-      <%= render "flags/flag_buttons", flaggable: @announcement %>
-    </div>
-  </span>
-</h2>
-
-<div class="announcement_body">
-  <%= @announcement.body %>
+  </div>
+  <div class="announcement_buttons">
+    <% if current_user.can_edit?(@announcement) %>
+      <%= button_to "Edit Announcement", [:edit, @announcement], method: :get %>
+      <%= button_to "Delete Announcement", @announcement, method: :delete %>
+    <% end %>
+    <%= render "flags/flag_buttons", flaggable: @announcement %>
+  </div>
 </div>
 
-<div class="comment_form">
+<div class="announcement_body">
+  <%=simple_format(@announcement.body) %>
+</div>
+
+<div class="comment_section">
   <h3>Comments</h3>
-  <div>
+  <div class="comment_body">
     <ul>
       <%= render @comments %>
     </ul>
   </div>
-  <%= form_for [@announcement, @comment] do |form| %>
-    <%= form.label :text, "New Comment" %>
-    <%= form.text_area :text %>
-    <%= form.submit "Post" %>
-  <% end %>
+  <div class="comment_form">
+    <%= render "comments/form", commentable: @announcement, comment: @comment %>
+  </div>
 </div>
 

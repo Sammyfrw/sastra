@@ -22,4 +22,8 @@ class Book < ActiveRecord::Base
   def flagged_by?(user)
     flags.exists?(user: user)
   end
+
+  def ordered_comments
+    comments.order(created_at: :asc)
+  end
 end

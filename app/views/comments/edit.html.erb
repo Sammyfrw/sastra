@@ -1,5 +1,1 @@
-<%= form_for [@commentable, @comment] do |form| %>
-  <%= form.label :text, "New Comment" %>
-  <%= form.text_area :text %>
-  <%= form.submit "Post" %>
-<% end %>
+<%= render "comments/form", commentable: @commentable, comment: @comment %>

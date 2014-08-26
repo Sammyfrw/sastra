@@ -42,16 +42,14 @@
   </ul>
 </div>
 
-<div class="comment_form">
+<div class="comment_section">
 <h3>Comments</h3>
-  <div>
+  <div class="comment_body">
     <ul>
       <%= render @comments %>
     </ul>
   </div>
-  <%= form_for [@book, @comment] do |form| %>
-    <%= form.label :text, "New Comment" %>
-    <%= form.text_area :text %>
-    <%= form.submit "Post" %>
-  <% end %>
+  <div class="comment_form"
+    <%= render "comments/form", commentable: @book, comment: @comment %>
+  </div>
 </div>

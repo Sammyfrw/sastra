@@ -1,5 +1,6 @@
 .yield{
   @include outer-container;
-  border: double grey;
   @include background(linear-gradient(#8A9EA6, #8A9EA6) left center no-repeat);
+  border: double grey;
+  padding: 32px;
 }

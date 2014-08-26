@@ -13,6 +13,10 @@ class Announcement < ActiveRecord::Base
     flags.exists?(user: user)
   end
 
+  def ordered_comments
+    comments.order(created_at: :asc)
+  end
+
   private
 
   def create_feedable

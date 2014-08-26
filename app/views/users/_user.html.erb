@@ -1,1 +1,5 @@
-<%= link_to user.username, user %>
+<div class="user_item">
+  <li>
+    <%= image_tag user.profile.avatar.small_thumb %><%= link_to user.username, user %>
+  </li>
+</div>

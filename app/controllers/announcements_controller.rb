@@ -7,7 +7,7 @@ class AnnouncementsController < ApplicationController
   def show
     @announcement = Announcement.find(params[:id])
     @user = @announcement.user
-    @comments = @announcement.comments
+    @comments = @announcement.ordered_comments
     @comment = Comment.new
   end
 

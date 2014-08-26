@@ -30,6 +30,13 @@
   @include span-columns(12);
 }
 
+.user_item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-style: none none solid;
+  border-color: grey;
+}
+
 .feed {
   @include span-columns (4 of 12);
   padding: 10px;

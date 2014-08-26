@@ -1,10 +1,25 @@
-.announcement_poster {
+.announcement_head {
+  margin-bottom: 36px;
+}
+
+  .announcement_poster {
   font-size: 12px;
 }
 
 .announcement_body {
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 24px;
   margin-bottom: 20px;
   border-style: none none double;
   border-color: grey;
 }
+
+.announcement_buttons {
+  margin-bottom: 10px;
+
+  form{
+  float: left;
+  margin-right: 10px;
+  }
+}
+

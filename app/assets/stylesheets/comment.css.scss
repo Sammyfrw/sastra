@@ -4,3 +4,7 @@
   border-style: none none solid;
   border-color: grey;
 }
+
+#comment_text {
+  @include span-columns(8);
+  }
