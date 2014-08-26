@@ -1,3 +1,5 @@
-<li>
-  <%= link_to book.title, book %>
-</li>
+<div class="book_item">
+  <li>
+    <%= link_to book.title, book %> (<%= book.status %>) by <%= render book.authors %>
+  </li>
+</div>
