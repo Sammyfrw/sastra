@@ -3,7 +3,7 @@
     <%= shout.body %>
     <br>
     <span class="timestamp">
-      --<%= link_to shout.sender.username %>
+      --<%= link_to shout.sender.username, shout.sender%>
       <%= time_ago_in_words(shout.created_at) %> ago
       <% if shout.involves?(current_user) %>
         <%= button_to "Delete", [shout.receiver, shout], method: :delete %>

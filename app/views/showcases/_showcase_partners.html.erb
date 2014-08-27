@@ -1,8 +1,10 @@
 <div class="showcase_section">
   <h3>Partners</h3>
-  <% if current_user == user %>
-    <%= button_to "Add Partner", [:new, :partner_relationship], method: :get %>
-  <% end %>
+  <div class="add_partner">
+    <% if current_user == user %>
+      <%= button_to "Add Partner", [:new, :partner_relationship], method: :get %>
+    <% end %>
+  </div>
   <div class="partner_list">
     <ul>
       <%= render @partner_relationships, user: @user %>

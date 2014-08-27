@@ -1,7 +1,9 @@
 <div class="user_info">
   <h2><%= @user.username %></h2>
-  <%= render "bookmark_button", user: @user %>
-  <%= render "flags/flag_buttons", flaggable: @user %>
+  <div class="user_buttons">
+    <%= render "bookmark_button", user: @user %>
+    <%= render "flags/flag_buttons", flaggable: @user %>
+  </div>
   <div class="user_links">
     <%= link_to "Bookmarks", [@user, :bookmarked_users] %> |
     <%= link_to "Bookmarkers", [@user, :bookmarkers] %> |

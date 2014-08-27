@@ -18,7 +18,8 @@
 
   <% if partner_relationship.accepted? %>
     <li>
-      <%= link_to partner_relationship.partner.username, partner_relationship.partner %>
+      <%= link_to partner_relationship.partner.username, partner_relationship.partner %> with
+      <%= link_to partner_relationship.initiator.username, partner_relationship.initiator %>
       <span class="partner_message">partners since <%= partner_relationship.updated_at.strftime("%d %B, %Y")%></span>
       <div class="partner_buttons">
         <%= button_to "Remove Partner", user_partner_relationship_path(id: partner_relationship.id), method: :delete %>

@@ -5,6 +5,6 @@ class SettingsController < ApplicationController
     @admins = users.where(admin: true)
     @unlocked_users = users.where(locked: false)
     @locked_users = users.where(locked: true)
-    @flags = Flag.all
+    @flags = Flag.order(created_at: :desc)
   end
 end

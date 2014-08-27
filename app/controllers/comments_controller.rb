@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
   def edit
     @commentable = find_commentable
     @comment = @commentable.comments.find(params[:id])
-    if current_user != @comment.user
+    if current_user.can_edit?(@comment)
+    else
       redirect_to root_path
     end
   end
@@ -16,7 +17,7 @@ class CommentsController < ApplicationController
   def update
     commentable = find_commentable
     comment = commentable.comments.find(params[:id])
-    if current_user == comment.user
+    if current_user.can_edit?(comment)
       comment.update(comment_params)
     end
     redirect_to commentable

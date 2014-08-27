@@ -1,5 +1,7 @@
-<%= form_for [commentable, comment] do |form| %>
-  <%= form.label :text, "Comment" %>
-  <%= form.text_area :text %>
-  <%= form.submit "Post" %>
-<% end %>
+<div class="form_field">
+  <%= form_for [commentable, comment] do |form| %>
+    <%= form.label :text, "Comment" %>
+    <%= form.text_area :text %>
+    <%= form.submit "Post" %>
+  <% end %>
+</div>

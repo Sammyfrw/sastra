@@ -69,10 +69,6 @@ class User < ActiveRecord::Base
   validates :admin, inclusion: { in: [true, false] }
   validates :locked, inclusion: { in: [true, false] }
 
-  def involved_shouts
-    shouts.where("sender_id = ? OR receiver_id = ?", id, id)
-  end
-
   def self.query(search_term)
     where("username ILIKE ?", "%#{search_term}%")
   end

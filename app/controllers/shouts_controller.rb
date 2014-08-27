@@ -5,8 +5,10 @@ class ShoutsController < ApplicationController
   end
 
   def destroy
-    shout = current_user.involved_shouts.find(params[:id])
-    shout.destroy
+    shout = Shout.find(params[:id])
+    if shout.involves?(current_user)
+      shout.destroy
+    end
     redirect_to shout.receiver
   end
 

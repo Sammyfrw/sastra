@@ -1,6 +1,5 @@
 .partner_item li {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  @include span-columns (8 of 12);
   border-style: none none solid;
   border-color: grey;
 }
@@ -9,6 +8,10 @@
   font-size: 12px;
   font-style: italic;
   font-color: grey;
+}
+
+.add_partner {
+  margin-bottom: 20px;
 }
 
 .partner_buttons form {

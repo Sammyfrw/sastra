@@ -20,7 +20,7 @@
       <% end %>
     </li>
     <li>Title: <%= @book.title %></li>
-    <li>Author: <%= render @book.authors %></li>
+    <li>Author: <ul><%= render @book.authors %></ul></li>
     <li>Genre: <%= @book.genre %></li>
     <li>Status: <%= @book.status %></li>
     <li>Edition: <%= @book.edition %></li>
@@ -28,7 +28,7 @@
     <li>ISBN-10: <%= @book.ISBN_10%></li>
     <li>ISBN-13: <%= @book.ISBN_13%></li>
 
-    <li>Publisher: <%= render @book.publishers %></li>
+    <li>Publisher: <ul><%= render @book.publishers %></ul></li>
     <li>Published Date: <%= @book.published %></li>
   </ul>
 

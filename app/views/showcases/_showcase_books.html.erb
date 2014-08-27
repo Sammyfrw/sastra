@@ -3,7 +3,6 @@
   <% if current_user == user %>
     <%= button_to "Add book", [:new, :book], method: :get %>
   <% end %>
-
   <div class="book_list">
     <ul>
       <%= render user.authored_books %>
