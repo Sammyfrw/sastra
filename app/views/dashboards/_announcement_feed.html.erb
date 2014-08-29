@@ -1,5 +1,5 @@
 <div class="feed_item">
-  <li><%= activity.user.username %> has made a new announcement, <%= link_to activity.title, activity %>
+  <li><%= link_to activity.user.username, activity.user %> has made a new announcement, <%= link_to activity.title, activity %>
     <br>
     <span class="timestamp">
       --<%= time_ago_in_words(activity.created_at) %>
